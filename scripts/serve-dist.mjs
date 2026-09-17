@@ -5,8 +5,10 @@ import { extname, join, normalize, resolve, sep } from "node:path";
 const root = resolve("dist");
 const port = Number(process.env.PORT || 4173);
 const host = "127.0.0.1";
-const base =
-  process.env.GITHUB_PAGES === "true" ? "/portfolio-dario-jauregui" : "";
+const base = (
+  process.env.BASE_PATH ||
+  (process.env.GITHUB_PAGES === "true" ? "/portfolio-dario-jauregui" : "")
+).replace(/\/$/, "");
 const types = {
   ".css": "text/css; charset=utf-8",
   ".html": "text/html; charset=utf-8",

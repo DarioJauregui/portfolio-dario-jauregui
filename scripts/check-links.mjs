@@ -2,8 +2,10 @@ import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { dirname, join, relative, resolve, sep } from "node:path";
 
 const root = resolve("dist");
-const base =
-  process.env.GITHUB_PAGES === "true" ? "/portfolio-dario-jauregui" : "";
+const base = (
+  process.env.BASE_PATH ||
+  (process.env.GITHUB_PAGES === "true" ? "/portfolio-dario-jauregui" : "")
+).replace(/\/$/, "");
 const htmlFiles = [];
 
 const walk = (directory) => {

@@ -3,8 +3,10 @@ import { chromium } from "@playwright/test";
 import { fileURLToPath } from "node:url";
 import { startServer } from "./serve-dist.mjs";
 
-const base =
-  process.env.GITHUB_PAGES === "true" ? "/portfolio-dario-jauregui" : "";
+const base = (
+  process.env.BASE_PATH ||
+  (process.env.GITHUB_PAGES === "true" ? "/portfolio-dario-jauregui" : "")
+).replace(/\/$/, "");
 const origin = `http://127.0.0.1:${process.env.PORT || 4173}`;
 const output = new URL("../public/downloads/", import.meta.url);
 await mkdir(output, { recursive: true });

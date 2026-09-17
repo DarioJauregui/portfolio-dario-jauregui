@@ -1,7 +1,10 @@
 import { defineConfig } from "@playwright/test";
 
-const base =
-  process.env.GITHUB_PAGES === "true" ? "/portfolio-dario-jauregui/" : "/";
+const basePath = (
+  process.env.BASE_PATH ||
+  (process.env.GITHUB_PAGES === "true" ? "/portfolio-dario-jauregui" : "")
+).replace(/\/$/, "");
+const base = basePath ? `${basePath}/` : "/";
 
 export default defineConfig({
   testDir: "./tests",
