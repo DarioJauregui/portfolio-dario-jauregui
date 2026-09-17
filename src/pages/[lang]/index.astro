@@ -1,0 +1,250 @@
+---
+import { getCollection } from "astro:content";
+import ArchitectureFlow from "../../components/ArchitectureFlow.astro";
+import FeaturedCard from "../../components/FeaturedCard.astro";
+import SectionHeader from "../../components/SectionHeader.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { profile, specialties } from "../../data/profile";
+import { site, withBase } from "../../data/site";
+import { ui, type Locale } from "../../i18n/ui";
+
+export function getStaticPaths() {
+  return ["es", "en"].map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Locale;
+const t = ui[lang];
+const allProjects = await getCollection("projects");
+const labEntries = await getCollection("lab");
+const featured = allProjects
+  .filter(({ data }) => data.level === "featured")
+  .sort((a, b) => a.data.order - b.data.order);
+const timeline = allProjects
+  .filter(({ data }) => data.level === "project")
+  .sort((a, b) => a.data.order - b.data.order);
+const lab = labEntries.sort((a, b) => a.data.order - b.data.order);
+const p = profile[lang];
+---
+
+<BaseLayout lang={lang} description={t.statement} path="/">
+  <SiteHeader lang={lang} />
+
+  <main id="main">
+    <section class="hero shell" aria-labelledby="hero-title">
+      <div>
+        <p class="eyebrow">{t.eyebrow}</p>
+        <h1 id="hero-title">
+          Darío <span>Jáuregui</span>
+        </h1>
+      </div>
+      <div class="hero-bottom">
+        <div>
+          <p class="hero-role">{site.role}</p>
+          <p class="statement">{t.statement}</p>
+        </div>
+        <a class="arrow-link" href="#work">
+          {t.viewWork}
+        </a>
+      </div>
+    </section>
+
+    <section
+      class="section shell hairline"
+      id="work"
+      aria-labelledby="work-title"
+    >
+      <SectionHeader
+        number="01"
+        title={t.selected}
+        intro={
+          lang === "es"
+            ? "Cuatro sistemas donde arquitectura, producto e impacto se encuentran."
+            : "Four systems where architecture, product thinking and impact meet."
+        }
+      />
+      <div class="featured-grid">
+        {featured.map((project) => (
+          <FeaturedCard project={project} lang={lang} />
+        ))}
+      </div>
+    </section>
+
+    <section
+      class="section shell hairline"
+      id="timeline"
+      aria-labelledby="timeline-title"
+    >
+      <SectionHeader
+        number="02"
+        title={t.timeline}
+        intro={
+          lang === "es"
+            ? "Sistemas aplicados a reporting, gobierno, digitalización y prevención."
+            : "Applied systems spanning reporting, governance, digitisation and prevention."
+        }
+      />
+      <div class="timeline-list">
+        {timeline.map(({ data }) => {
+          const copy = data.copy[lang];
+          return (
+            <details class="timeline-item">
+              <summary>
+                <span class="timeline-code">{data.code}</span>
+                <span class="timeline-title">{copy.title}</span>
+                <span class="timeline-period">{data.period[lang]}</span>
+                <span class="timeline-toggle" aria-hidden="true">
+                  +
+                </span>
+              </summary>
+              <div class="timeline-content">
+                <p>{copy.system}</p>
+                <p>
+                  <strong>{t.contribution}.</strong> {copy.contribution}
+                </p>
+                <p class="timeline-impact">
+                  <strong>{t.impact}.</strong> {copy.impact}
+                </p>
+                <ArchitectureFlow steps={data.architecture[lang]} compact />
+              </div>
+            </details>
+          );
+        })}
+      </div>
+    </section>
+
+    <section class="section section--dark" id="lab" aria-labelledby="lab-title">
+      <div class="shell">
+        <SectionHeader
+          number="03"
+          title={t.lab}
+          intro={
+            lang === "es"
+              ? "Pruebas físicas, sistemas preventivos y aprendizaje mediante prototipos."
+              : "Physical experiments, preventive systems and learning through prototypes."
+          }
+        />
+        <div class="lab-grid">
+          {lab.map(({ data }, index) => {
+            const copy = data.copy[lang];
+            return (
+              <article class="lab-card">
+                <div class="lab-figure" aria-hidden="true">
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <div
+                    class:list={[
+                      "lab-device",
+                      { "lab-device--rain": data.code === "P008" },
+                    ]}
+                  >
+                    <i></i>
+                    <i></i>
+                    <i></i>
+                  </div>
+                </div>
+                <div>
+                  <p class="eyebrow">
+                    {data.code} · {data.status[lang]}
+                  </p>
+                  <h3>{copy.title}</h3>
+                  <p>{copy.strapline}</p>
+                  <ul class="tag-list">
+                    {data.stack.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                  <p class="confidentiality-note">{copy.confidentiality}</p>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="section shell hairline"
+      id="profile"
+      aria-labelledby="profile-title"
+    >
+      <SectionHeader number="04" title={t.profile} intro={t.profileLead} />
+      <div class="profile-grid">
+        <div class="profile-intro">
+          <p>{p.intro}</p>
+          <p>{p.context}</p>
+          <ul class="specialties">
+            {specialties.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+        <div class="experience-list">
+          {p.experience.map((item) => (
+            <article>
+              <p class="eyebrow">{item.period}</p>
+              <h3>{item.role}</h3>
+              <p class="organisation">{item.organisation}</p>
+              <p>{item.detail}</p>
+            </article>
+          ))}
+          <div class="education">
+            <p class="eyebrow">{lang === "es" ? "Formación" : "Education"}</p>
+            <ul>
+              {p.education.map((item) => (
+                <li>{item}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="section contact-section shell hairline"
+      id="contact"
+      aria-labelledby="contact-title"
+    >
+      <SectionHeader number="05" title={t.contact} intro={t.contactLead} />
+      <div class="contact-grid">
+        <a class="contact-primary" href={`mailto:${site.email}`}>
+          <span>Email</span>
+          <strong>{site.email}</strong>
+          <i>↗</i>
+        </a>
+        <div class="contact-links">
+          <a href={site.linkedin} rel="me">
+            LinkedIn <span>↗</span>
+          </a>
+          <a href={site.github} rel="me">
+            GitHub <span>↗</span>
+          </a>
+        </div>
+        <div class="download-links">
+          <a
+            href={withBase(`/downloads/dario-jauregui-cv-${lang}.pdf`)}
+            download
+          >
+            {t.downloadCv} ({lang.toUpperCase()}) <span>↓</span>
+          </a>
+          <a
+            href={withBase(`/downloads/dario-jauregui-portfolio-${lang}.pdf`)}
+            download
+          >
+            {t.downloadPortfolio} ({lang.toUpperCase()}) <span>↓</span>
+          </a>
+          <a href={withBase(`/${lang}/print/`)}>
+            {t.printView} <span>↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer shell hairline">
+    <p>
+      © {new Date().getFullYear()} {site.name}
+    </p>
+    <p>{site.role}</p>
+    <a href="#main">{lang === "es" ? "Volver arriba ↑" : "Back to top ↑"}</a>
+  </footer>
+</BaseLayout>

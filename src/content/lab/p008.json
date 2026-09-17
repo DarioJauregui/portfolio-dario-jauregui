@@ -1,0 +1,44 @@
+{
+  "code": "P008",
+  "order": 9,
+  "period": { "es": "2026", "en": "2026" },
+  "level": "lab",
+  "status": { "es": "Prototipo o piloto", "en": "Prototype or pilot" },
+  "stack": ["ESP32", "Sensor de lluvia", "ESP-NOW"],
+  "architecture": {
+    "es": [
+      "Detección de lluvia",
+      "Comunicación inalámbrica",
+      "Aviso",
+      "Respuesta hidráulica"
+    ],
+    "en": [
+      "Rain detection",
+      "Wireless communication",
+      "Warning",
+      "Hydraulic response"
+    ]
+  },
+  "copy": {
+    "es": {
+      "title": "Detección de lluvia y respuesta hidráulica",
+      "strapline": "Sensorización para detectar lluvia y apoyar una respuesta temprana sobre bombas de evacuación de agua.",
+      "context": "La acumulación de agua bajo estaciones motiva explorar señales tempranas que ayuden a activar una respuesta.",
+      "problem": "El punto de medida y el punto de aviso o actuación pueden estar separados y necesitar comunicación robusta.",
+      "system": "El prototipo combina ESP32, un sensor de lluvia y comunicación ESP-NOW entre el punto de medida y el aviso o actuación.",
+      "contribution": "Diseñé el principio de sensorización, comunicación y respuesta para probar la viabilidad técnica.",
+      "impact": "El piloto permite aprender sobre umbrales, comunicación inalámbrica y automatización preventiva.",
+      "confidentiality": "Se presenta como prototipo o piloto; no se afirma homologación, certificación ni autonomía operativa."
+    },
+    "en": {
+      "title": "Rain detection and hydraulic response",
+      "strapline": "Sensing designed to detect rain and support an early response from water evacuation pumps.",
+      "context": "Water accumulation beneath stations motivates exploring early signals that can support a timely response.",
+      "problem": "The measurement point and the warning or actuation point can be separated and require robust communication.",
+      "system": "The prototype combines an ESP32, a rain sensor and ESP-NOW communication between measurement and warning or actuation points.",
+      "contribution": "I designed the sensing, communication and response principle to test technical feasibility.",
+      "impact": "The pilot supports learning about thresholds, wireless communication and preventive automation.",
+      "confidentiality": "It is presented as a prototype or pilot; no approval, certification or operational autonomy is claimed."
+    }
+  }
+}

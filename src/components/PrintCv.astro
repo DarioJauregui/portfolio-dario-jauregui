@@ -1,0 +1,76 @@
+---
+import { profile, specialties } from "../data/profile";
+import { site } from "../data/site";
+import type { Locale } from "../i18n/ui";
+
+interface Props {
+  lang: Locale;
+}
+const { lang } = Astro.props;
+const p = profile[lang];
+---
+
+<main class="cv-page">
+  <header class="cv-header">
+    <div>
+      <span>CURRICULUM VITAE / 2026</span>
+      <h1>
+        Darío <em>Jáuregui</em>
+      </h1>
+      <p>{site.role}</p>
+    </div>
+    <address>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+      <a href={site.linkedin}>linkedin.com/in/dariojauregui/</a>
+      <a href={site.github}>github.com/DarioJauregui</a>
+    </address>
+  </header>
+  <section class="cv-profile">
+    <h2>{lang === "es" ? "Perfil" : "Profile"}</h2>
+    <p>{p.intro}</p>
+    <ul>
+      {specialties.map((item) => (
+        <li>{item}</li>
+      ))}
+    </ul>
+  </section>
+  <div class="cv-columns">
+    <section>
+      <h2>{lang === "es" ? "Experiencia" : "Experience"}</h2>
+      {p.experience.map((item) => (
+        <article>
+          <span>{item.period}</span>
+          <h3>{item.role}</h3>
+          <strong>{item.organisation}</strong>
+          <p>{item.detail}</p>
+        </article>
+      ))}
+    </section>
+    <section>
+      <h2>{lang === "es" ? "Formación" : "Education"}</h2>
+      <ul class="cv-education">
+        {p.education.map((item) => (
+          <li>{item}</li>
+        ))}
+      </ul>
+      <h2>{lang === "es" ? "Idiomas" : "Languages"}</h2>
+      <ul class="cv-languages">
+        <li>{lang === "es" ? "Español · Nativo" : "Spanish · Native"}</li>
+        <li>
+          {lang === "es"
+            ? "Inglés · Certificación B2 y C1 académica"
+            : "English · B2 certificate and academic C1"}
+        </li>
+        <li>
+          {lang === "es"
+            ? "Francés · B1 oficial, comunicación fluida"
+            : "French · Official B1, fluent communication"}
+        </li>
+      </ul>
+    </section>
+  </div>
+  <footer>
+    <span>dariojauregui.github.io/portfolio-dario-jauregui/</span>
+    <span>AI · DATA · AUTOMATION</span>
+  </footer>
+</main>

@@ -1,0 +1,49 @@
+---
+import { site, withBase } from "../data/site";
+import { ui, type Locale } from "../i18n/ui";
+
+interface Props {
+  lang: Locale;
+  alternatePath?: string;
+}
+
+const { lang, alternatePath = "/" } = Astro.props;
+const t = ui[lang];
+const alternate = lang === "es" ? "en" : "es";
+---
+
+<header class="site-header shell hairline">
+  <a
+    class="site-mark"
+    href={withBase(`/${lang}/`)}
+    aria-label={`DJ. - ${site.name}, ${lang === "es" ? "inicio" : "home"}`}
+  >
+    DJ<span class="site-mark-dot">.</span>
+  </a>
+  <nav
+    class="nav"
+    aria-label={lang === "es" ? "Navegación principal" : "Main navigation"}
+  >
+    <a href={withBase(`/${lang}/#work`)}>{t.nav.work}</a>
+    <a href={withBase(`/${lang}/#profile`)}>{t.nav.profile}</a>
+    <a href={withBase(`/${lang}/#contact`)}>{t.nav.contact}</a>
+    <span
+      class="language hairline"
+      aria-label={lang === "es" ? "Idioma" : "Language"}
+    >
+      <a
+        href={withBase(`/${lang}${alternatePath}`)}
+        data-language={lang}
+        aria-current="page"
+      >
+        {lang.toUpperCase()}
+      </a>
+      <a
+        href={withBase(`/${alternate}${alternatePath}`)}
+        data-language={alternate}
+      >
+        {alternate.toUpperCase()}
+      </a>
+    </span>
+  </nav>
+</header>

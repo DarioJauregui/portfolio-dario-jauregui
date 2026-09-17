@@ -1,0 +1,101 @@
+---
+import "../styles/global.css";
+import { site, withBase } from "../data/site";
+import type { Locale } from "../i18n/ui";
+
+interface Props {
+  lang: Locale;
+  title?: string;
+  description: string;
+  path?: string;
+  image?: string | null;
+  noindex?: boolean;
+}
+
+const {
+  lang,
+  title = site.name,
+  description,
+  path = "/",
+  image = "/og.png",
+  noindex = false,
+} = Astro.props;
+const canonical = new URL(withBase(`/${lang}${path}`), Astro.site);
+const socialImage = image ? new URL(withBase(image), Astro.site) : null;
+const fullTitle =
+  title === site.name
+    ? `${site.name} - ${site.role}`
+    : `${title} - ${site.name}`;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: site.name,
+  jobTitle: site.role,
+  email: `mailto:${site.email}`,
+  url: new URL(withBase(`/${lang}/`), Astro.site).href,
+  sameAs: [site.linkedin, site.github],
+  knowsAbout: [
+    "Data Engineering",
+    "Artificial Intelligence",
+    "Process Automation",
+    "Business Intelligence",
+    "Robotics",
+  ],
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#f3f2ee" />
+    {noindex && <meta name="robots" content="noindex" />}
+    <link rel="canonical" href={canonical} />
+    <link
+      rel="alternate"
+      hreflang="es"
+      href={new URL(withBase("/es/"), Astro.site)}
+    />
+    <link
+      rel="alternate"
+      hreflang="en"
+      href={new URL(withBase("/en/"), Astro.site)}
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={new URL(withBase("/es/"), Astro.site)}
+    />
+    <link rel="icon" href={withBase("/favicon.ico")} sizes="any" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content={lang === "es" ? "es_ES" : "en_GB"} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    {socialImage && <meta property="og:image" content={socialImage} />}
+    {socialImage && <meta name="twitter:image" content={socialImage} />}
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(jsonLd)}
+    ></script>
+    <title>{fullTitle}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      {lang === "es" ? "Saltar al contenido" : "Skip to content"}
+    </a>
+    <slot />
+    <script is:inline>
+      document.querySelectorAll("[data-language]").forEach((link) => {
+        link.addEventListener("click", () =>
+          localStorage.setItem("language", link.dataset.language),
+        );
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "code": "P009",
+  "order": 8,
+  "period": { "es": "2025", "en": "2025" },
+  "level": "project",
+  "status": { "es": "Sistema preventivo", "en": "Preventive system" },
+  "stack": ["Baliza de detección", "Aviso sonoro", "Aviso luminoso"],
+  "architecture": {
+    "es": [
+      "Detección de proximidad",
+      "Evaluación preventiva",
+      "Aviso sonoro",
+      "Aviso luminoso"
+    ],
+    "en": [
+      "Proximity detection",
+      "Preventive assessment",
+      "Audible warning",
+      "Visual warning"
+    ]
+  },
+  "copy": {
+    "es": {
+      "title": "Alarma anticolisión para vehículo bimodal",
+      "strapline": "Un sistema preventivo concebido para advertir del riesgo durante la circulación de un vehículo de mantenimiento.",
+      "context": "La circulación de vehículos de mantenimiento por infraestructura ferroviaria exige reforzar la percepción del entorno.",
+      "problem": "El proyecto exploró una advertencia temprana y comprensible ante una posible situación de proximidad.",
+      "system": "El concepto combina detección mediante baliza con avisos sonoros y luminosos para apoyar una respuesta preventiva.",
+      "contribution": "Participé en el diseño del principio de detección y de la lógica de aviso orientada a un prototipo preventivo.",
+      "impact": "El trabajo permitió materializar y evaluar el principio técnico de alerta.",
+      "confidentiality": "Se presenta como sistema preventivo; no se afirma certificación, homologación ni despliegue de seguridad."
+    },
+    "en": {
+      "title": "Anti-collision alert for a bimodal vehicle",
+      "strapline": "A preventive system conceived to warn of risk while a maintenance vehicle is moving through rail infrastructure.",
+      "context": "Operating maintenance vehicles on rail infrastructure makes situational awareness especially important.",
+      "problem": "The project explored an early and understandable warning for a potential proximity situation.",
+      "system": "The concept combines beacon-based detection with audible and visual warnings to support a preventive response.",
+      "contribution": "I contributed to the detection principle and warning logic for a preventive prototype.",
+      "impact": "The work made it possible to materialise and assess the technical alert principle.",
+      "confidentiality": "It is presented as a preventive system; no certification, approval or safety deployment is claimed."
+    }
+  }
+}

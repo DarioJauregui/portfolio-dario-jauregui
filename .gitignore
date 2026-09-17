@@ -1,0 +1,25 @@
+# Dependencies and build output
+node_modules/
+dist/
+.astro/
+
+# Source materials are local-only
+Assets/
+
+# Generated and temporary artifacts
+tmp/
+output/
+public/downloads/*.pdf
+playwright-report/
+test-results/
+
+# Environment, credentials, and local tooling
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+

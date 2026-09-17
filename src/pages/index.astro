@@ -1,0 +1,10 @@
+---
+import { withBase } from "../data/site";
+---
+
+<meta http-equiv="refresh" content={`0;url=${withBase("/es/")}`} />
+<link rel="canonical" href={withBase("/es/")} />
+<script is:inline define:vars={{ target: withBase("/es/") }}>
+  const saved = localStorage.getItem("language");
+  location.replace(saved === "en" ? target.replace("/es/", "/en/") : target);
+</script>

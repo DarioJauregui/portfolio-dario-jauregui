@@ -1,0 +1,46 @@
+{
+  "code": "P006",
+  "order": 7,
+  "period": { "es": "2026", "en": "2026" },
+  "level": "project",
+  "status": { "es": "Trabajo colaborativo", "en": "Collaborative delivery" },
+  "stack": ["Formularios web", "Python/ETL", "Azure Functions", "SharePoint"],
+  "architecture": {
+    "es": [
+      "Formularios",
+      "Integración",
+      "Normalización ETL",
+      "Seguimiento",
+      "Análisis y tratamiento"
+    ],
+    "en": [
+      "Forms",
+      "Integration",
+      "ETL normalisation",
+      "Tracking",
+      "Analysis and handling"
+    ]
+  },
+  "copy": {
+    "es": {
+      "title": "Digitalización de los procesos de atención al cliente",
+      "strapline": "Del papel a un circuito estructurado y trazable de captura, integración y tratamiento.",
+      "context": "Los procesos de atención al cliente dependían de capturas en papel y de circuitos de tratamiento difíciles de seguir.",
+      "problem": "Digitalizar el proceso requería coordinar formularios, integración, normalización y uso posterior de los datos.",
+      "system": "Las ETL normalizan los datos capturados y los preparan para seguimiento, análisis, consulta y tratamiento interno.",
+      "contribution": "Diseñé los formularios y la arquitectura de integración y automatización. Una empresa externa desarrolló los formularios web.",
+      "impact": "Sustitución de procesos en papel por un circuito estructurado y trazable.",
+      "confidentiality": "La colaboración y la autoría se describen con precisión; no se publican formularios ni flujos internos."
+    },
+    "en": {
+      "title": "Digitising customer service processes",
+      "strapline": "Replacing paper with a structured and traceable capture, integration and handling flow.",
+      "context": "Customer service processes relied on paper capture and treatment workflows that were difficult to track.",
+      "problem": "Digitisation required forms, integration, normalisation and downstream use of the resulting data to work together.",
+      "system": "ETL processes normalise captured data and prepare it for tracking, analysis, consultation and internal handling.",
+      "contribution": "I designed the forms and the integration and automation architecture. An external company developed the web forms.",
+      "impact": "Paper-based processes were replaced by a structured and traceable workflow.",
+      "confidentiality": "The collaboration and authorship are stated precisely; forms and internal workflows are not published."
+    }
+  }
+}

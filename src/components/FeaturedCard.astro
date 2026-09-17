@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { withBase } from "../data/site";
+import { ui, type Locale } from "../i18n/ui";
+import ProjectVisual from "./ProjectVisual.astro";
+
+interface Props {
+  project: CollectionEntry<"projects">;
+  lang: Locale;
+}
+const { project, lang } = Astro.props;
+const data = project.data;
+const copy = data.copy[lang];
+const t = ui[lang];
+---
+
+<article class="featured-card">
+  <div class="featured-visual-link">
+    <ProjectVisual code={data.code} lang={lang} />
+  </div>
+  <div class="featured-copy">
+    <div class="featured-meta">
+      <span>{String(data.order).padStart(2, "0")}</span>
+      <span>{data.code}</span>
+      <span>{data.period[lang]}</span>
+    </div>
+    <h3>
+      <a href={withBase(`/${lang}/work/${data.code.toLowerCase()}/`)}>
+        {copy.title}
+      </a>
+    </h3>
+    <p>{copy.strapline}</p>
+    <a
+      class="text-link"
+      href={withBase(`/${lang}/work/${data.code.toLowerCase()}/`)}
+    >
+      {t.readCase}
+      <span>↗</span>
+    </a>
+  </div>
+</article>

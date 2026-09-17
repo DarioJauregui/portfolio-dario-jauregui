@@ -1,0 +1,46 @@
+{
+  "code": "P005",
+  "order": 6,
+  "period": { "es": "2024 - Actualidad", "en": "2024 - Present" },
+  "level": "project",
+  "status": { "es": "Evolución continua", "en": "Continuous evolution" },
+  "stack": ["Data architecture", "Data quality", "Governance", "Power BI"],
+  "architecture": {
+    "es": [
+      "Fuentes dispersas",
+      "Criterios compartidos",
+      "Modelo común",
+      "Calidad y acceso",
+      "Productos de datos"
+    ],
+    "en": [
+      "Scattered sources",
+      "Shared criteria",
+      "Common model",
+      "Quality and access",
+      "Data products"
+    ]
+  },
+  "copy": {
+    "es": {
+      "title": "Arquitectura y gobierno corporativo del dato",
+      "strapline": "Un modelo común para convertir conjuntos dispersos en información coherente, reutilizable y gobernada.",
+      "context": "La organización disponía de numerosas fuentes y conjuntos desarrollados con estructuras y criterios diferentes.",
+      "problem": "Las duplicidades, discrepancias y definiciones no compartidas dificultaban crear nuevos productos de datos con confianza.",
+      "system": "Organicé la gran mayoría de fuentes bajo criterios comunes de estructura, transformación, medidas, calidad y acceso.",
+      "contribution": "Definí y apliqué el modelo común que prepara la información para analítica, automatización y nuevos productos internos.",
+      "impact": "Una versión más coherente y reutilizable de la información, con menos duplicidades y mayor facilidad para construir sobre datos gobernados.",
+      "confidentiality": "La presentación se limita a principios de arquitectura y gobierno, sin inventarios ni estructuras internas."
+    },
+    "en": {
+      "title": "Corporate data architecture and governance",
+      "strapline": "A common model turning scattered datasets into coherent, reusable and governed information.",
+      "context": "The organisation had numerous sources and datasets developed with different structures and criteria.",
+      "problem": "Duplication, discrepancies and inconsistent definitions made it difficult to build new data products with confidence.",
+      "system": "I organised most sources around shared criteria for structure, transformation, measures, quality and access.",
+      "contribution": "I defined and applied the common model that prepares information for analytics, automation and new internal products.",
+      "impact": "A more coherent and reusable version of the information, with less duplication and a stronger base for governed data products.",
+      "confidentiality": "The public presentation is limited to architecture and governance principles, without internal inventories or structures."
+    }
+  }
+}

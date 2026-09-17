@@ -1,0 +1,19 @@
+---
+interface Props {
+  steps: string[];
+  compact?: boolean;
+}
+const { steps, compact = false } = Astro.props;
+---
+
+<ol
+  class:list={["architecture", { "architecture--compact": compact }]}
+  aria-label="Architecture flow"
+>
+  {steps.map((step, index) => (
+    <li>
+      <span>{String(index + 1).padStart(2, "0")}</span>
+      {step}
+    </li>
+  ))}
+</ol>

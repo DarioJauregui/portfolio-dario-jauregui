@@ -1,0 +1,225 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { profile, specialties } from "../data/profile";
+import { site } from "../data/site";
+import { ui, type Locale } from "../i18n/ui";
+
+interface Props {
+  lang: Locale;
+  featured: CollectionEntry<"projects">[];
+  timeline: CollectionEntry<"projects">[];
+  lab: CollectionEntry<"lab">[];
+}
+
+const { lang, featured, timeline, lab } = Astro.props;
+const t = ui[lang];
+const p = profile[lang];
+---
+
+<main class="print-portfolio">
+  <section class="print-cover">
+    <div class="print-cover-top">
+      <span>PORTFOLIO / 2026</span>
+      <span>ES ↔ EN</span>
+    </div>
+    <div>
+      <p class="print-eyebrow">{site.role}</p>
+      <h1>
+        Darío
+        <br />
+        <em>Jáuregui</em>
+      </h1>
+      <p class="print-statement">{t.statement}</p>
+    </div>
+    <div class="print-cover-bottom">
+      <p>{site.email}</p>
+      <p>linkedin.com/in/dariojauregui/</p>
+      <p>github.com/DarioJauregui</p>
+    </div>
+  </section>
+
+  <section class="print-page print-overview">
+    <header>
+      <span>00</span>
+      <h2>{lang === "es" ? "Perfil y archivo" : "Profile and archive"}</h2>
+    </header>
+    <p class="print-lead">{p.intro}</p>
+    <div class="print-two-columns">
+      <div>
+        <h3>{lang === "es" ? "Áreas" : "Areas"}</h3>
+        <ul class="print-tags">
+          {specialties.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <h3>{lang === "es" ? "Trabajo seleccionado" : "Selected work"}</h3>
+        <ol class="print-index">
+          {featured.map(({ data }) => (
+            <li>
+              <span>{String(data.order).padStart(2, "0")}</span>
+              <b>{data.code}</b>
+              {data.copy[lang].title}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+    <div class="print-experience">
+      {p.experience.map((item) => (
+        <article>
+          <span>{item.period}</span>
+          <h3>{item.role}</h3>
+          <p>{item.organisation}</p>
+          <small>{item.detail}</small>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  {featured.map(({ data }) => {
+    const copy = data.copy[lang];
+    return (
+      <section class="print-page print-project">
+        <header class="print-project-header">
+          <div>
+            <span>{String(data.order).padStart(2, "0")}</span>
+            <b>{data.code}</b>
+          </div>
+          <div>
+            <small>{data.period[lang]}</small>
+            <small>{data.status[lang]}</small>
+          </div>
+        </header>
+        <h2>{copy.title}</h2>
+        <p class="print-deck">{copy.strapline}</p>
+        <div class="print-metric" data-code={data.code}>
+          {data.code === "P001" && (
+            <>
+              <b>≈ 7</b>
+              <span>
+                {lang === "es" ? "áreas de negocio" : "business areas"}
+              </span>
+              <b>≈ 20</b>
+              <span>dashboards</span>
+            </>
+          )}
+          {data.code === "P002" && (
+            <>
+              <b>1 s</b>
+              <span>{lang === "es" ? "actualización" : "refresh"}</span>
+              <b>24/7</b>
+              <span>
+                {lang === "es" ? "lectura continua" : "continuous view"}
+              </span>
+            </>
+          )}
+          {data.code === "P003" && (
+            <>
+              <b>9.3%</b>
+              <span>WAPE</span>
+              <b>45.8%</b>
+              <span>
+                {lang === "es" ? "mejora aprox." : "approx. improvement"}
+              </span>
+            </>
+          )}
+          {data.code === "P007" && (
+            <>
+              <b>&gt; 10</b>
+              <span>
+                {lang === "es" ? "jornadas / mes" : "working days / month"}
+              </span>
+              <b>01</b>
+              <span>
+                {lang === "es" ? "flujo repetible" : "repeatable flow"}
+              </span>
+            </>
+          )}
+        </div>
+        <div class="print-case-grid">
+          <article>
+            <h3>{t.problem}</h3>
+            <p>{copy.problem}</p>
+          </article>
+          <article>
+            <h3>{t.system}</h3>
+            <p>{copy.system}</p>
+          </article>
+          <article>
+            <h3>{t.contribution}</h3>
+            <p>{copy.contribution}</p>
+          </article>
+          <article>
+            <h3>{t.impact}</h3>
+            <p>{copy.impact}</p>
+          </article>
+        </div>
+        <div class="print-flow">
+          {data.architecture[lang].map((step, index) => (
+            <span>
+              <i>{String(index + 1).padStart(2, "0")}</i>
+              {step}
+            </span>
+          ))}
+        </div>
+        <div class="print-project-footer">
+          <p>
+            <b>{t.technologies}</b> · {data.stack.join(" · ")}
+          </p>
+          <p>
+            <b>{t.confidentiality}</b> · {copy.confidentiality}
+          </p>
+        </div>
+      </section>
+    );
+  })}
+
+  <section class="print-page print-archive">
+    <header>
+      <span>05</span>
+      <h2>{t.allWork}</h2>
+    </header>
+    <div class="print-timeline">
+      {timeline.map(({ data }) => (
+        <article>
+          <span>
+            {data.code}
+            <small>{data.period[lang]}</small>
+          </span>
+          <div>
+            <h3>{data.copy[lang].title}</h3>
+            <p>{data.copy[lang].system}</p>
+            <strong>{data.copy[lang].impact}</strong>
+          </div>
+        </article>
+      ))}
+    </div>
+    <h2 class="print-lab-title">{t.lab}</h2>
+    <div class="print-lab">
+      {lab.map(({ data }) => (
+        <article>
+          <span>{data.code}</span>
+          <h3>{data.copy[lang].title}</h3>
+          <p>{data.copy[lang].strapline}</p>
+          <small>{data.copy[lang].confidentiality}</small>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="print-page print-contact">
+    <div>
+      <span>06</span>
+      <h2>{t.contact}</h2>
+      <p>{t.contactLead}</p>
+    </div>
+    <address>
+      <a href={`mailto:${site.email}`}>{site.email}</a>
+      <a href={site.linkedin}>linkedin.com/in/dariojauregui/</a>
+      <a href={site.github}>github.com/DarioJauregui</a>
+    </address>
+    <p class="print-url">dariojauregui.github.io/portfolio-dario-jauregui/</p>
+  </section>
+</main>

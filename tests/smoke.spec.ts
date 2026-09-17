@@ -1,0 +1,37 @@
+import { expect, test } from "@playwright/test";
+
+test("home, language and selected work are navigable", async ({ page }) => {
+  const errors: string[] = [];
+  page.on(
+    "console",
+    (message) => message.type() === "error" && errors.push(message.text()),
+  );
+  await page.goto("es/");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("Darío");
+  await expect(page.locator(".featured-card")).toHaveCount(4);
+  await page.getByRole("link", { name: "EN", exact: true }).click();
+  await expect(page).toHaveURL(/\/en\/$/);
+  await expect(page.getByText("Selected work", { exact: true })).toBeVisible();
+  expect(errors).toEqual([]);
+});
+
+for (const code of ["p001", "p002", "p003", "p007"]) {
+  test(`${code} case study and print routes respond`, async ({
+    page,
+    request,
+  }) => {
+    await page.goto(`es/work/${code}/`);
+    await expect(page.locator("main.case-study h1")).toBeVisible();
+    expect((await request.get(`es/print/`)).ok()).toBeTruthy();
+    expect((await request.get(`en/print/`)).ok()).toBeTruthy();
+  });
+}
+
+test("PDF downloads and 404 are present", async ({ request }) => {
+  for (const file of ["portfolio-es", "portfolio-en", "cv-es", "cv-en"]) {
+    const response = await request.get(`downloads/dario-jauregui-${file}.pdf`);
+    expect(response.ok(), file).toBeTruthy();
+    expect((await response.body()).byteLength).toBeGreaterThan(10_000);
+  }
+  expect((await request.get("missing-route/")).status()).toBe(404);
+});

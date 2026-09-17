@@ -1,0 +1,36 @@
+---
+import { getCollection } from "astro:content";
+import PrintPortfolio from "../../../components/PrintPortfolio.astro";
+import { ui, type Locale } from "../../../i18n/ui";
+import PrintLayout from "../../../layouts/PrintLayout.astro";
+
+export function getStaticPaths() {
+  return ["es", "en"].map((lang) => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Locale;
+const projects = await getCollection("projects");
+const featured = projects
+  .filter(({ data }) => data.level === "featured")
+  .sort((a, b) => a.data.order - b.data.order);
+const timeline = projects
+  .filter(({ data }) => data.level === "project")
+  .sort((a, b) => a.data.order - b.data.order);
+const lab = (await getCollection("lab")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
+---
+
+<PrintLayout
+  lang={lang}
+  title={ui[lang].downloadPortfolio}
+  description={ui[lang].statement}
+  path="/print/"
+>
+  <PrintPortfolio
+    lang={lang}
+    featured={featured}
+    timeline={timeline}
+    lab={lab}
+  />
+</PrintLayout>

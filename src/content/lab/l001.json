@@ -1,0 +1,55 @@
+{
+  "code": "L001",
+  "order": 10,
+  "period": { "es": "2026 - Actualidad", "en": "2026 - Present" },
+  "level": "lab",
+  "status": {
+    "es": "Lab público en etapa inicial",
+    "en": "Early-stage public lab"
+  },
+  "stack": [
+    "Electrónica",
+    "Programación",
+    "Sensores",
+    "Mecanismos",
+    "Prototipado"
+  ],
+  "architecture": {
+    "es": [
+      "Reto guiado",
+      "Diseño",
+      "Montaje",
+      "Programación",
+      "Prueba y aprendizaje"
+    ],
+    "en": [
+      "Guided challenge",
+      "Design",
+      "Assembly",
+      "Programming",
+      "Testing and learning"
+    ]
+  },
+  "copy": {
+    "es": {
+      "title": "Aula de robótica educativa",
+      "strapline": "Una iniciativa personal para acercar electrónica, programación y prototipado a niños mediante proyectos.",
+      "context": "La robótica ofrece una forma tangible de conectar curiosidad, razonamiento y creatividad desde edades tempranas.",
+      "problem": "El reto consiste en convertir conceptos técnicos en actividades progresivas, seguras y motivadoras.",
+      "system": "El laboratorio combina sensores, mecanismos, programación y prototipado en retos con resultados visibles.",
+      "contribution": "Estoy diseñando el enfoque, la secuencia de actividades y los prototipos educativos.",
+      "impact": "El proyecto está en una etapa inicial de aprendizaje basado en proyectos.",
+      "confidentiality": "La iniciativa es pública; se protegerá la imagen y cualquier dato personal de los participantes."
+    },
+    "en": {
+      "title": "Educational robotics classroom",
+      "strapline": "A personal initiative bringing electronics, programming and prototyping to children through projects.",
+      "context": "Robotics offers a tangible way to connect curiosity, reasoning and creativity from an early age.",
+      "problem": "The challenge is turning technical ideas into progressive, safe and motivating activities.",
+      "system": "The lab combines sensors, mechanisms, programming and prototyping in challenges with visible outcomes.",
+      "contribution": "I am designing the approach, activity sequence and educational prototypes.",
+      "impact": "The project is at an early stage and follows a project-based learning approach.",
+      "confidentiality": "The initiative is public; participants' images and personal data will be protected."
+    }
+  }
+}

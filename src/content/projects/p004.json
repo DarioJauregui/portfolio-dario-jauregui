@@ -1,0 +1,47 @@
+{
+  "code": "P004",
+  "order": 5,
+  "period": { "es": "2025", "en": "2025" },
+  "level": "project",
+  "status": {
+    "es": "Sistema de reporting periódico",
+    "en": "Recurring reporting system"
+  },
+  "stack": ["Python", "ETL", "Frontend ligero"],
+  "architecture": {
+    "es": [
+      "Fuentes de explotación",
+      "Reglas reproducibles",
+      "Indicadores y ratios",
+      "Informe mensual"
+    ],
+    "en": [
+      "Operational sources",
+      "Reproducible rules",
+      "Indicators and ratios",
+      "Monthly report"
+    ]
+  },
+  "copy": {
+    "es": {
+      "title": "Informe mensual de explotación",
+      "strapline": "Procesos ETL reproducibles para consolidar indicadores periódicos de funcionamiento, servicio y calidad.",
+      "context": "El informe mensual remitido a la Junta de Andalucía requiere consolidar información de explotación de forma periódica.",
+      "problem": "Las reglas de cálculo complejas necesitaban repetibilidad y trazabilidad para reducir el riesgo de operaciones manuales.",
+      "system": "Diseñé y desarrollé procesos ETL y un frontend ligero que consolidan fuentes y aplican las reglas necesarias para producir indicadores y ratios.",
+      "contribution": "Definí la preparación de datos, la lógica de cálculo y la evolución del soporte de consulta asociado al informe.",
+      "impact": "Mayor repetibilidad y trazabilidad, con menor riesgo en cálculos manuales.",
+      "confidentiality": "Se explica el proceso sin publicar cifras, plantillas, fuentes ni reglas internas identificables."
+    },
+    "en": {
+      "title": "Monthly operations report",
+      "strapline": "Reproducible ETL processes consolidating recurring service, performance and quality indicators.",
+      "context": "The monthly report submitted to the Andalusian regional administration requires operational information to be consolidated regularly.",
+      "problem": "Complex calculation rules needed repeatability and traceability to reduce the risk associated with manual processing.",
+      "system": "I designed and developed ETL processes and a lightweight interface that consolidate sources and apply the required rules to produce indicators and ratios.",
+      "contribution": "I defined data preparation, calculation logic and the evolution of the supporting consultation layer.",
+      "impact": "Greater repeatability and traceability, with less risk in manual calculations.",
+      "confidentiality": "The public summary explains the process without publishing figures, templates, sources or identifiable internal rules."
+    }
+  }
+}
