@@ -7,7 +7,6 @@
     "es": "Sistema de reporting periódico",
     "en": "Recurring reporting system"
   },
-  "stack": ["Python", "ETL", "Frontend ligero"],
   "architecture": {
     "es": [
       "Fuentes de explotación",

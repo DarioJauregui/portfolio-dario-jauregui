@@ -1,7 +1,7 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { profile, specialties } from "../data/profile";
-import { site } from "../data/site";
+import { profile } from "../data/profile";
+import { site, withBase } from "../data/site";
 import { ui, type Locale } from "../i18n/ui";
 
 interface Props {
@@ -14,7 +14,11 @@ interface Props {
 const { lang, featured, timeline, lab } = Astro.props;
 const t = ui[lang];
 const p = profile[lang];
-const featuredGroups = [featured.slice(0, 2), featured.slice(2, 4)];
+const featuredGroups = [
+  featured.slice(0, 1),
+  featured.slice(1, 2),
+  featured.slice(2, 4),
+];
 const evidence = {
   P001:
     lang === "es"
@@ -55,34 +59,24 @@ const evidence = {
       <span>{lang === "es" ? "PERFIL" : "PROFILE"}</span>
       <h2>{t.profile}</h2>
     </header>
-    <p class="print-lead">{p.intro}</p>
-    <p class="print-body-copy">{p.context}</p>
-    <div class="print-two-columns">
-      <div>
-        <h3>{lang === "es" ? "Áreas" : "Areas"}</h3>
-        <p class="print-inline-list">{specialties.join(" · ")}</p>
-      </div>
-      <div>
-        <h3>{t.selected}</h3>
-        <ol class="print-index">
-          {featured.map(({ data }) => (
-            <li>
-              <b>{data.code}</b>
-              {data.copy[lang].title}
-            </li>
-          ))}
-        </ol>
-      </div>
-    </div>
-    <div class="print-experience">
-      {p.experience.map((item) => (
-        <article>
-          <span>{item.period}</span>
-          <h3>{item.role}</h3>
-          <p>{item.organisation}</p>
-          <small>{item.detail}</small>
-        </article>
+    <div class="print-about">
+      {p.map((paragraph, index) => (
+        <p class:list={{ "print-lead": index === 0 }}>{paragraph}</p>
       ))}
+    </div>
+    <div class="print-selected-index">
+      <h3>{t.selected}</h3>
+      <ol class="print-index">
+        {featured.map(({ data }) => (
+          <li>
+            <b>{data.code}</b>
+            <span>
+              <strong>{data.copy[lang].title}</strong>
+              <small>{data.copy[lang].subtitle}</small>
+            </span>
+          </li>
+        ))}
+      </ol>
     </div>
   </section>
 
@@ -101,8 +95,25 @@ const evidence = {
               <small>{data.status[lang]}</small>
             </header>
             <h2>{copy.title}</h2>
+            <p class="print-subtitle">{copy.subtitle}</p>
             <p class="print-deck">{copy.strapline}</p>
             {result && <p class="print-evidence">{result}</p>}
+            {data.media && (
+              <figure
+                class:list={[
+                  "print-project-media",
+                  `print-project-media--${data.code.toLowerCase()}`,
+                ]}
+              >
+                <img
+                  src={withBase(data.media.src)}
+                  width={data.media.width}
+                  height={data.media.height}
+                  alt={data.media.alt[lang]}
+                />
+                <figcaption>{data.media.caption[lang]}</figcaption>
+              </figure>
+            )}
             <div class="print-story">
               <div>
                 <h3>{lang === "es" ? "Necesidad" : "Need"}</h3>
@@ -129,9 +140,11 @@ const evidence = {
                 </span>
               ))}
             </div>
-            <p class="print-tech">
-              <b>{t.technologies}</b> · {data.stack.join(" · ")}
-            </p>
+            {copy.technical && (
+              <p class="print-technical">
+                <b>{t.technical}</b> · {copy.technical}
+              </p>
+            )}
           </article>
         );
       })}
@@ -153,7 +166,6 @@ const evidence = {
           <div>
             <h3>{data.copy[lang].title}</h3>
             <p>{data.copy[lang].strapline}</p>
-            <small>{data.stack.slice(0, 3).join(" · ")}</small>
           </div>
         </article>
       ))}

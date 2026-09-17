@@ -1,6 +1,6 @@
 # Portfolio de Darío Jáuregui
 
-Portfolio profesional bilingüe de Darío Jáuregui, AI, Data & Automation Engineer. Presenta cuatro case studies, una timeline de sistemas profesionales, un laboratorio de prototipos y versiones PDF reproducibles.
+Portfolio profesional bilingüe de Darío Jáuregui, AI, Data & Automation Engineer. Presenta cuatro casos de estudio, otros sistemas profesionales, un laboratorio de prototipos y portfolios PDF reproducibles.
 
 ## Stack
 
@@ -38,18 +38,16 @@ npm run ci          # Validación completa, enlaces y navegación
 - `src/content/lab/`: prototipos y proyecto educativo.
 - `src/content.config.ts`: esquema obligatorio compartido.
 - `src/i18n/`: textos de interfaz ES/EN.
-- `src/data/`: perfil, experiencia, enlaces y configuración editorial.
+- `src/data/`: presentación personal, enlaces y configuración editorial.
 
 Para añadir un proyecto, duplica una entrada JSON de la colección adecuada, completa ES y EN, conserva un `code` único y ejecuta `npm run check` y `npm run test`. Los componentes no deben contener hechos de proyecto.
 
 ## PDF
 
-Las rutas `/es/print/`, `/en/print/`, `/es/cv/` y `/en/cv/` usan las mismas fuentes estructuradas que la web. `scripts/generate-pdf.mjs` genera:
+Las rutas `/es/print/` y `/en/print/` usan las mismas fuentes estructuradas que la web. `scripts/generate-pdf.mjs` genera:
 
 - `dario-jauregui-portfolio-es.pdf`
 - `dario-jauregui-portfolio-en.pdf`
-- `dario-jauregui-cv-es.pdf`
-- `dario-jauregui-cv-en.pdf`
 
 Los archivos se crean en `public/downloads/` y se incorporan a `dist/` en el segundo build de `npm run build:full`.
 
@@ -76,6 +74,6 @@ No se configura DNS antes de elegir y comprar el dominio.
 
 ## Material que nunca se publica
 
-`Assets/`, `Assets/raw/`, briefs, CV fuente, capturas originales, datos reales, credenciales, `.env`, artefactos de modelos, rutas internas, temporales y documentos editables quedan fuera de Git. Las decisiones de publicación se registran en `PUBLISHING_REVIEW.md`.
+`Assets/`, briefs, documentos personales, capturas originales, datos reales, credenciales, `.env`, artefactos de modelos, rutas internas, temporales y documentos editables quedan fuera de Git. Las decisiones de publicación se registran en `PUBLISHING_REVIEW.md`.
 
 Este repositorio se publica sin licencia de código abierto.

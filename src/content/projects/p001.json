@@ -7,14 +7,19 @@
     "es": "Producción y evolución continua",
     "en": "Production and continuous evolution"
   },
-  "stack": [
-    "Angular",
-    "Python",
-    "Flask",
-    "Power BI",
-    "Microsoft Identity",
-    "CI/CD"
-  ],
+  "media": {
+    "src": "/media/p001-terraldata-platform.webp",
+    "width": 1320,
+    "height": 660,
+    "alt": {
+      "es": "Vista recortada de TerralData con navegación lateral y panel principal",
+      "en": "Cropped TerralData view with side navigation and the main dashboard"
+    },
+    "caption": {
+      "es": "Vista saneada de la plataforma; las cifras operativas se han pixelado.",
+      "en": "Sanitised platform view; operational figures have been pixelated."
+    }
+  },
   "architecture": {
     "es": [
       "Fuentes operativas",
@@ -33,24 +38,28 @@
   },
   "copy": {
     "es": {
-      "title": "TerralData - Plataforma corporativa de datos y analítica",
+      "title": "TerralData",
+      "subtitle": "Plataforma corporativa de datos y analítica",
       "strapline": "Una plataforma interna que convierte fuentes dispersas en información actualizada, segura y accesible.",
       "context": "La información necesaria para analizar la actividad estaba repartida entre fuentes, procesos y áreas con necesidades distintas.",
       "problem": "Mantener definiciones coherentes, actualizar resultados con rapidez y ofrecer una visión común requería un sistema compartido y controlado.",
       "system": "Desde 2024 construyo una plataforma que automatiza la recopilación, preparación y publicación de datos, y centraliza paneles y módulos web.",
       "contribution": "He desarrollado frontend, backend, integraciones, automatizaciones y modelo de acceso, además de la mayor parte de los paneles.",
       "impact": "Da servicio a unas siete áreas de negocio y reúne alrededor de veinte paneles con actualizaciones automáticas y acceso por roles.",
-      "confidentiality": "La presentación pública utiliza únicamente arquitectura de alto nivel y datos sintéticos."
+      "technical": "La plataforma está construida con Angular en el frontend y servicios Python y Flask en el backend, e integra Power BI y Microsoft Identity para la visualización y el control de acceso.",
+      "confidentiality": "La presentación pública utiliza arquitectura de alto nivel y una captura recortada con las cifras operativas pixeladas."
     },
     "en": {
-      "title": "TerralData - Corporate data and analytics platform",
+      "title": "TerralData",
+      "subtitle": "Corporate data and analytics platform",
       "strapline": "An internal platform that turns scattered sources into timely, secure and accessible information.",
       "context": "The information needed to understand operations was spread across sources, processes and teams with different needs.",
       "problem": "Consistent definitions, timely updates and a shared view required a governed system rather than isolated reporting flows.",
       "system": "Since 2024, I have built a platform that automates data collection, preparation and publishing, centralising dashboards and web modules.",
       "contribution": "I developed the frontend, backend, integrations, automation and access model, as well as most of the dashboards.",
       "impact": "It supports roughly seven business areas and brings together around twenty dashboards with automated updates and role-based access.",
-      "confidentiality": "The public presentation uses high-level architecture and synthetic data only."
+      "technical": "The platform uses Angular on the frontend and Python and Flask services on the backend, with Power BI and Microsoft Identity supporting visualisation and access control.",
+      "confidentiality": "The public presentation uses high-level architecture and a cropped capture with operational figures pixelated."
     }
   }
 }

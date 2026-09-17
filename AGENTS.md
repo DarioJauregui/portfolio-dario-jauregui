@@ -18,14 +18,14 @@
 - Toda entrada debe superar el esquema de `src/content.config.ts` y contener ES/EN equivalentes.
 - Featured: P001, P002, P003 y P007. Timeline: P004, P005, P006 y P009. Lab: P008 y L001.
 - Para añadir un proyecto, crea una entrada JSON, completa ambos idiomas, asígnale orden y ejecuta las comprobaciones. No cambies componentes para introducir datos editoriales.
-- Los case studies son artículos continuos y compactos: contexto, solución, funcionamiento, contribución, resultado y tecnologías. No recuperar las antiguas pantallas numeradas.
-- La home mantiene este orden: hero, proyectos destacados, sobre mí y trayectoria, otros proyectos, Lab, contacto.
+- Los case studies son artículos continuos y compactos: contexto, solución, funcionamiento, contribución, resultado e implementación técnica explicada en prosa. No recuperar las antiguas pantallas numeradas ni listas de palabras clave.
+- La home mantiene este orden: hero, proyectos destacados, sobre mí, otros proyectos, Lab, contacto.
 
 ## Confidencialidad
 
 - `Assets/` y especialmente `Assets/raw/` son fuente local de solo lectura y nunca se versionan.
 - No publicar datos reales, credenciales, URLs o rutas internas, endpoints, nombres de equipos, identificadores operativos, artefactos de modelos ni infraestructura sensible.
-- No publicar logotipos ni capturas corporativas sin autorización clara. Usar datos sintéticos y diagramas propios.
+- Las capturas autorizadas se publican únicamente como derivados saneados en `public/media/`; nunca copiar originales de `Assets` al despliegue.
 - Las restricciones editoriales y de confidencialidad permanecen en los datos y en `PUBLISHING_REVIEW.md`; nunca se muestran al visitante.
 - No usar métricas inventadas o decorativas. Las cifras aprobadas aparecen con tamaño moderado y contexto, una sola vez por pieza.
 - P003 es un MVP interno y proyecto aplicado. P006 debe acreditar el desarrollo externo de formularios. P008 y P009 no tienen afirmaciones de homologación, certificación o despliegue de seguridad.
@@ -34,7 +34,7 @@
 ## PDF y despliegue
 
 - Web y PDF comparten la misma fuente de contenido.
-- Las rutas de impresión son `/es/print/`, `/en/print/`, `/es/cv/` y `/en/cv/`.
+- Las rutas de impresión son `/es/print/` y `/en/print/`.
 - `npm run build:full` debe regenerar PDF y dejar `dist/` listo.
 - GitHub Pages se despliega desde `main` mediante Actions. No añadir otro proveedor ni tokens personales.
 - La URL y el `base` se controlan con `SITE_URL` y `BASE_PATH`; al publicar mediante Actions no se añade `public/CNAME`.
@@ -48,4 +48,4 @@ npm run format
 npm run ci
 ```
 
-Revisar visualmente ES/EN en móvil, tablet y escritorio, y todas las páginas de los cuatro PDF. Auditar el conjunto versionado y buscar secretos antes de cada publicación. No generar ni ejecutar binarios `.exe` del proyecto; utilizar scripts de Node o alternativas interpretadas cuando sea posible.
+Revisar visualmente ES/EN en móvil, tablet y escritorio, y todas las páginas de los dos portfolios PDF. Auditar el conjunto versionado y buscar secretos antes de cada publicación. No generar ni ejecutar binarios `.exe` del proyecto; utilizar scripts de Node o alternativas interpretadas cuando sea posible.

@@ -14,6 +14,19 @@ for (const viewport of viewports) {
     await page.setViewportSize(viewport);
     await page.goto("es/", { waitUntil: "networkidle" });
     await expect(page.locator("main")).toBeVisible();
+    await expect(page.locator(".project-media img")).toHaveCount(2);
+    expect(
+      await page
+        .locator(".project-media img")
+        .evaluateAll((images) =>
+          images.every(
+            (image) =>
+              image instanceof HTMLImageElement &&
+              image.complete &&
+              image.naturalWidth > 0,
+          ),
+        ),
+    ).toBeTruthy();
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= window.innerWidth,
@@ -34,16 +47,18 @@ for (const viewport of [viewports[0], viewports[3]]) {
   test(`case study visual QA: ${viewport.name}`, async ({ page }) => {
     await mkdir("output/playwright", { recursive: true });
     await page.setViewportSize(viewport);
-    await page.goto("es/work/p003/", { waitUntil: "networkidle" });
-    await expect(page.locator("main h1")).toBeVisible();
-    expect(
-      await page.evaluate(
-        () => document.documentElement.scrollWidth <= window.innerWidth,
-      ),
-    ).toBeTruthy();
-    await page.screenshot({
-      path: `output/playwright/case-p003-${viewport.name}.png`,
-      fullPage: true,
-    });
+    for (const code of ["p001", "p002", "p003"]) {
+      await page.goto(`es/work/${code}/`, { waitUntil: "networkidle" });
+      await expect(page.locator("main h1")).toBeVisible();
+      expect(
+        await page.evaluate(
+          () => document.documentElement.scrollWidth <= window.innerWidth,
+        ),
+      ).toBeTruthy();
+      await page.screenshot({
+        path: `output/playwright/case-${code}-${viewport.name}.png`,
+        fullPage: true,
+      });
+    }
   });
 }

@@ -7,7 +7,6 @@
     "es": "Solución interna implementada",
     "en": "Implemented internal solution"
   },
-  "stack": ["Python", "Power Query", "Excel/CSV/XLS", "TerralData"],
   "architecture": {
     "es": [
       "Excel, CSV y XLS",
@@ -28,23 +27,27 @@
   },
   "copy": {
     "es": {
-      "title": "Conciliación automática de recaudaciones",
+      "title": "Conciliación de recaudaciones",
+      "subtitle": "Automatización y gestión de excepciones",
       "strapline": "Automatización económica orientada a concentrar la revisión humana exclusivamente en las excepciones.",
       "context": "La comprobación requería comparar manualmente documentos y ficheros procedentes de varias fuentes y formatos.",
       "problem": "Las diferencias de estructura consumían más de diez jornadas de trabajo al mes y aumentaban el esfuerzo de seguimiento.",
       "system": "El sistema ingiere Excel, CSV y XLS, normaliza registros, aplica reglas de conciliación, detecta diferencias y prepara excepciones para revisión.",
       "contribution": "Diseñé el proceso y desarrollé la preparación de fuentes, las reglas de cruce, la detección de discrepancias y la presentación de resultados.",
       "impact": "Ahorra más de diez jornadas de trabajo cada mes y convierte una comparación manual exhaustiva en un proceso repetible centrado en diferencias.",
+      "technical": "El proceso combina Python y Power Query para normalizar ficheros Excel, CSV y XLS, aplicar reglas de cruce y presentar en TerralData únicamente las excepciones que requieren revisión.",
       "confidentiality": "La demostración usa nombres genéricos y datos sintéticos; no publica importes, referencias, formatos internos ni documentos reales."
     },
     "en": {
-      "title": "Automated revenue reconciliation",
+      "title": "Revenue reconciliation",
+      "subtitle": "Automation and exception management",
       "strapline": "Financial reconciliation automation designed to focus human review exclusively on exceptions.",
       "context": "The check required manual comparison of documents and files arriving from several sources and in different formats.",
       "problem": "Structural differences consumed more than ten working days every month and increased the effort needed to follow up discrepancies.",
       "system": "The system ingests Excel, CSV and XLS files, normalises records, applies reconciliation rules, detects differences and prepares exceptions for review.",
       "contribution": "I designed the process and developed source preparation, matching rules, discrepancy detection and result presentation.",
       "impact": "It saves more than ten working days every month and turns exhaustive manual comparison into a repeatable, exception-led process.",
+      "technical": "The process combines Python and Power Query to normalise Excel, CSV and XLS files, apply matching rules and present only the exceptions that require review in TerralData.",
       "confidentiality": "The demonstration uses generic source names and synthetic data; it does not publish amounts, references, internal formats or real documents."
     }
   }

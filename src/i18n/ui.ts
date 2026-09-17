@@ -13,15 +13,12 @@ export const ui = {
     contact: "Contacto",
     readCase: "Ver proyecto",
     architecture: "Arquitectura",
-    technologies: "Tecnologías",
+    technical: "Implementación técnica",
     back: "Volver a proyectos",
     allWork: "Otros proyectos",
     present: "Actualidad",
-    downloadCv: "Currículum completo · PDF ↗",
     downloadPortfolio: "Portfolio PDF",
     printView: "Vista de impresión",
-    profileLead:
-      "Software, datos y sistemas físicos para construir soluciones completas y mantenibles.",
     contactLead:
       "Disponible para conversar sobre datos, automatización, IA aplicada y productos técnicos.",
     problem: "Problema",
@@ -43,15 +40,12 @@ export const ui = {
     contact: "Contact",
     readCase: "View project",
     architecture: "Architecture",
-    technologies: "Technologies",
+    technical: "Technical implementation",
     back: "Back to projects",
     allWork: "Other projects",
     present: "Present",
-    downloadCv: "Full résumé · PDF ↗",
     downloadPortfolio: "Portfolio PDF",
     printView: "Print view",
-    profileLead:
-      "Software, data and physical systems brought together into complete, maintainable solutions.",
     contactLead:
       "Open to conversations about data, automation, applied AI and technical products.",
     problem: "Problem",

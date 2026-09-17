@@ -7,13 +7,6 @@
     "es": "Lab público en etapa inicial",
     "en": "Early-stage public lab"
   },
-  "stack": [
-    "Electrónica",
-    "Programación",
-    "Sensores",
-    "Mecanismos",
-    "Prototipado"
-  ],
   "architecture": {
     "es": [
       "Reto guiado",

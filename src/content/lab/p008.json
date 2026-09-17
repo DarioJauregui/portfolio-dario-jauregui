@@ -4,7 +4,6 @@
   "period": { "es": "2026", "en": "2026" },
   "level": "lab",
   "status": { "es": "Prototipo o piloto", "en": "Prototype or pilot" },
-  "stack": ["ESP32", "Sensor de lluvia", "ESP-NOW"],
   "architecture": {
     "es": [
       "Detección de lluvia",

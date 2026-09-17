@@ -7,7 +7,19 @@
     "es": "Producción y evolución continua",
     "en": "Production and continuous evolution"
   },
-  "stack": ["Python ETL", "Python API", "React", "TypeScript"],
+  "media": {
+    "src": "/media/p002-live-operations-display.webp",
+    "width": 1240,
+    "height": 720,
+    "alt": {
+      "es": "Vista del display operativo con indicadores en vivo y gráficos energéticos",
+      "en": "Operations display showing live indicators and energy charts"
+    },
+    "caption": {
+      "es": "Captura saneada del display; se han recortado el mapa y la cabecera y pixelado los datos puntuales.",
+      "en": "Sanitised display capture; the map and header were cropped and point-in-time data pixelated."
+    }
+  },
   "architecture": {
     "es": [
       "Fuentes en tiempo real",
@@ -26,24 +38,28 @@
   },
   "copy": {
     "es": {
-      "title": "Live Operations Display - Datos que ocurren ahora",
+      "title": "Live Operations Display",
+      "subtitle": "Datos operativos en tiempo real",
       "strapline": "Una pantalla de gran formato que une datos en tiempo real, comparaciones comprensibles y comunicación interna.",
       "context": "Los indicadores vivos, como demanda o producción fotovoltaica, resultan difíciles de comunicar mediante informes convencionales.",
       "problem": "El reto era transformar flujos continuos en una experiencia clara, dinámica y legible de un vistazo durante todo el día.",
       "system": "Desarrollé las pipelines hasta una API consumida por el frontend. La pantalla actualiza datos cada segundo, genera comparaciones y administra mensajes en carrusel.",
       "contribution": "Me encargué del flujo de extremo a extremo: adquisición, tratamiento, API, lógica editorial, frontend y preparación para funcionamiento continuo.",
       "impact": "Reúne monitorización en vivo, interpretación contextual y comunicación corporativa para explicar qué ocurre y cómo se compara con referencias recientes.",
-      "confidentiality": "Los visuales públicos recrean la experiencia con datos sintéticos y sin mapas, logotipos ni identificadores operativos."
+      "technical": "La solución conecta pipelines ETL y una API desarrolladas en Python con un frontend en React y TypeScript preparado para actualizar y contextualizar los datos de forma continua.",
+      "confidentiality": "La captura pública recorta la cabecera, el mapa y los identificadores y pixela los datos puntuales."
     },
     "en": {
-      "title": "Live Operations Display - Data happening now",
+      "title": "Live Operations Display",
+      "subtitle": "Real-time operational data",
       "strapline": "A large-format display combining real-time data, understandable comparisons and internal communication.",
       "context": "Live indicators such as demand or photovoltaic output are difficult to communicate through conventional reports.",
       "problem": "The challenge was turning continuous streams into an experience that stays clear, dynamic and readable at a glance throughout the day.",
       "system": "I built the pipelines through to a frontend-facing API. The display refreshes every second, generates comparisons and manages carousel messages.",
       "contribution": "I owned the end-to-end flow: acquisition, processing, API, editorial logic, frontend and preparation for continuous operation.",
       "impact": "It brings live monitoring, contextual interpretation and internal communication together to explain what is happening and how it compares with recent references.",
-      "confidentiality": "Public visuals recreate the experience with synthetic data and omit maps, logos and operational identifiers."
+      "technical": "The solution connects Python ETL pipelines and an API to a React and TypeScript frontend designed to update and contextualise the data continuously.",
+      "confidentiality": "The public capture crops the header, map and identifiers and pixelates point-in-time data."
     }
   }
 }

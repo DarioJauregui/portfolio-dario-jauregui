@@ -4,7 +4,6 @@
   "period": { "es": "2024 - Actualidad", "en": "2024 - Present" },
   "level": "project",
   "status": { "es": "Evolución continua", "en": "Continuous evolution" },
-  "stack": ["Data architecture", "Data quality", "Governance", "Power BI"],
   "architecture": {
     "es": [
       "Fuentes dispersas",

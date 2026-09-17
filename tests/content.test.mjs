@@ -71,6 +71,19 @@ test("Spanish and English contain equivalent project fields", () => {
       );
     }
   }
+
+  for (const entry of entries.filter(({ level }) => level === "featured")) {
+    for (const lang of ["es", "en"]) {
+      assert.ok(
+        entry.copy[lang].subtitle?.trim(),
+        `${entry.code}.${lang}.subtitle`,
+      );
+      assert.ok(
+        entry.copy[lang].technical?.trim(),
+        `${entry.code}.${lang}.technical`,
+      );
+    }
+  }
 });
 
 test("approved metrics and collaboration wording are preserved", () => {

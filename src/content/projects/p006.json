@@ -4,7 +4,6 @@
   "period": { "es": "2026", "en": "2026" },
   "level": "project",
   "status": { "es": "Trabajo colaborativo", "en": "Collaborative delivery" },
-  "stack": ["Formularios web", "Python/ETL", "Azure Functions", "SharePoint"],
   "architecture": {
     "es": [
       "Formularios",

@@ -1,10 +1,21 @@
 ---
+import { withBase } from "../data/site";
+
 interface Props {
   code: string;
   lang: "es" | "en";
   compact?: boolean;
+  media?:
+    | {
+        src: string;
+        width: number;
+        height: number;
+        alt: { es: string; en: string };
+        caption: { es: string; en: string };
+      }
+    | undefined;
 }
-const { code, lang, compact = false } = Astro.props;
+const { code, lang, compact = false, media } = Astro.props;
 const diagrams = {
   P001: {
     es: ["Fuentes operativas", "Modelo común", "Productos y acceso"],
@@ -45,22 +56,36 @@ const diagram = diagrams[code as keyof typeof diagrams]?.[lang] ?? [code];
 const caption = captions[code as keyof typeof captions] ?? code;
 ---
 
-<figure
-  class:list={[
-    "project-visual",
-    `project-visual--${code.toLowerCase()}`,
-    { "project-visual--compact": compact },
-  ]}
-  aria-label={caption}
->
-  <div class="visual-code">{code}</div>
-  <div class="visual-flow">
-    {diagram.map((step, index) => (
-      <div class="visual-step">
-        <span>{step}</span>
-        {index < diagram.length - 1 && <i aria-hidden="true">→</i>}
-      </div>
-    ))}
-  </div>
-  <figcaption>{caption}</figcaption>
-</figure>
+{media ? (
+  <figure class:list={["project-media", { "project-media--compact": compact }]}>
+    <img
+      src={withBase(media.src)}
+      width={media.width}
+      height={media.height}
+      alt={media.alt[lang]}
+      loading={compact ? "eager" : "lazy"}
+      decoding="async"
+    />
+    <figcaption>{media.caption[lang]}</figcaption>
+  </figure>
+) : (
+  <figure
+    class:list={[
+      "project-visual",
+      `project-visual--${code.toLowerCase()}`,
+      { "project-visual--compact": compact },
+    ]}
+    aria-label={caption}
+  >
+    <div class="visual-code">{code}</div>
+    <div class="visual-flow">
+      {diagram.map((step, index) => (
+        <div class="visual-step">
+          <span>{step}</span>
+          {index < diagram.length - 1 && <i aria-hidden="true">→</i>}
+        </div>
+      ))}
+    </div>
+    <figcaption>{caption}</figcaption>
+  </figure>
+)}

@@ -35,11 +35,12 @@ const currentIndex = featured.findIndex(
   ({ data: item }) => item.code === data.code,
 );
 const nextProject = featured[(currentIndex + 1) % featured.length]!.data;
+const seoTitle = [copy.title, copy.subtitle].filter(Boolean).join(" - ");
 ---
 
 <BaseLayout
   lang={lang}
-  title={copy.title}
+  title={seoTitle}
   description={copy.strapline}
   path={`/work/${data.code.toLowerCase()}/`}
   image={null}
@@ -58,9 +59,15 @@ const nextProject = featured[(currentIndex + 1) % featured.length]!.data;
       <div class="case-title-grid">
         <div>
           <h1>{copy.title}</h1>
-          <p>{copy.strapline}</p>
+          <p class="case-subtitle">{copy.subtitle}</p>
+          <p class="case-deck">{copy.strapline}</p>
         </div>
-        <ProjectVisual code={data.code} lang={lang} compact />
+        <ProjectVisual
+          code={data.code}
+          lang={lang}
+          compact
+          media={data.media}
+        />
       </div>
     </header>
 
@@ -116,13 +123,17 @@ const nextProject = featured[(currentIndex + 1) % featured.length]!.data;
         </div>
       </section>
 
-      <section
-        class="case-article-section case-technologies"
-        aria-labelledby="tech-title"
-      >
-        <h2 id="tech-title">{t.technologies}</h2>
-        <p>{data.stack.join(" · ")}</p>
-      </section>
+      {copy.technical && (
+        <section
+          class="case-article-section case-technical"
+          aria-labelledby="tech-title"
+        >
+          <h2 id="tech-title">{t.technical}</h2>
+          <div class="case-prose">
+            <p>{copy.technical}</p>
+          </div>
+        </section>
+      )}
     </article>
 
     <nav

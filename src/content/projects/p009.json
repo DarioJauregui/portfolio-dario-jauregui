@@ -4,7 +4,6 @@
   "period": { "es": "2025", "en": "2025" },
   "level": "project",
   "status": { "es": "Sistema preventivo", "en": "Preventive system" },
-  "stack": ["Baliza de detección", "Aviso sonoro", "Aviso luminoso"],
   "architecture": {
     "es": [
       "Detección de proximidad",

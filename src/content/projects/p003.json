@@ -7,16 +7,6 @@
     "es": "MVP interno y TFM aplicado",
     "en": "Internal MVP and applied master's project"
   },
-  "stack": [
-    "Python 3.12",
-    "scikit-learn",
-    "SHAP",
-    "FastAPI",
-    "React",
-    "MLflow",
-    "DVC",
-    "Prometheus/Grafana"
-  ],
   "architecture": {
     "es": [
       "Datos y contexto",
@@ -37,23 +27,27 @@
   },
   "copy": {
     "es": {
-      "title": "Metro Scenario Studio - Predicción y escenarios de demanda",
+      "title": "Metro Scenario Studio",
+      "subtitle": "Predicción y escenarios de demanda",
       "strapline": "Un MVP para anticipar demanda diaria, explicar el resultado y explorar escenarios futuros.",
       "context": "La planificación dispone de históricos, pero necesita anticipar cambios bajo condiciones futuras de calendario, meteorología, eventos y servicio.",
       "problem": "Era necesario combinar fuentes heterogéneas, evitar fugas temporales y presentar predicciones comprensibles en una herramienta utilizable.",
       "system": "Construí datos y features, entrenamiento y evaluación temporal, inferencia mediante API y una interfaz what-if con SHAP, historial y trazabilidad.",
       "contribution": "Diseñé e implementé el pipeline, el modelo, la validación temporal, el motor de escenarios, la API, la interfaz y el entorno reproducible.",
       "impact": "El modelo alcanzó un WAPE del 9,3 %, mejoró aproximadamente un 45,8 % el baseline estacional semanal y obtuvo 4,5 sobre 5 en evaluación funcional interna.",
+      "technical": "El sistema combina un modelo HistGradientBoostingRegressor con distribución Poisson, una API FastAPI y una interfaz React; SHAP aporta explicabilidad y MLflow y DVC mantienen la trazabilidad de experimentos y artefactos.",
       "confidentiality": "Se presenta como MVP interno y proyecto aplicado; los datos reales y los artefactos entrenados permanecen fuera del repositorio."
     },
     "en": {
-      "title": "Metro Scenario Studio - Demand forecasting and scenarios",
+      "title": "Metro Scenario Studio",
+      "subtitle": "Demand forecasting and scenarios",
       "strapline": "An MVP for forecasting daily demand, explaining outcomes and exploring future scenarios.",
       "context": "Planning teams have historical data, but need to anticipate changes driven by future calendars, weather, events and planned service.",
       "problem": "The work had to combine heterogeneous sources, prevent temporal leakage and present understandable predictions in a usable tool.",
       "system": "I built the data and feature pipeline, temporal training and evaluation, API inference and a what-if interface with SHAP, history and traceability.",
       "contribution": "I designed and implemented the pipeline, model, temporal validation, scenario engine, API, interface and reproducible environment.",
       "impact": "The model achieved 9.3% WAPE, improved the weekly seasonal baseline by about 45.8%, and scored 4.5 out of 5 in internal functional evaluation.",
+      "technical": "The system combines a Poisson HistGradientBoostingRegressor model, a FastAPI service and a React interface; SHAP provides explainability while MLflow and DVC preserve experiment and artifact traceability.",
       "confidentiality": "It is presented as an internal MVP and applied project; real data and trained artifacts remain outside the public repository."
     }
   }
