@@ -57,7 +57,7 @@ Los archivos se crean en `public/downloads/` y se incorporan a `dist/` en el seg
 
 `ci.yml` valida pull requests y permite ejecución manual. `deploy.yml` ejecuta la validación completa y publica `dist/` al actualizar `main` o mediante `workflow_dispatch`. Solo usa `GITHUB_TOKEN` con permisos mínimos; no requiere secretos personales.
 
-La configuración de Astro centraliza `site` y `base`. En GitHub Pages se activa con `GITHUB_PAGES=true`; con dominio propio vuelve automáticamente a `/`.
+La configuración de Astro centraliza `site` y `base`. En GitHub Pages usa la ruta del repositorio; las variables de Actions `SITE_URL` y `BASE_PATH` permiten pasar a un dominio propio sin modificar la configuración.
 
 ## Dominio propio
 
@@ -67,8 +67,9 @@ Cuando exista un dominio:
 2. Para un subdominio `www`, crea un CNAME hacia `dariojauregui.github.io`.
 3. Para un dominio raíz, crea los registros A/AAAA que GitHub indique en ese momento y verifícalos en su documentación oficial.
 4. Añade el archivo `public/CNAME` con el dominio elegido.
-5. Define `SITE_URL` con la URL real en el workflow o sustituye la URL de reserva de GitHub Pages en `astro.config.mjs`.
-6. Ejecuta `npm run ci`, haz push a `main`, espera al despliegue y activa **Enforce HTTPS**.
+5. En **Settings → Secrets and variables → Actions → Variables**, crea `SITE_URL=https://tu-dominio` y `BASE_PATH=/`.
+6. Ejecuta `npm run ci`, confirma `public/CNAME` en Git y haz push a `main`.
+7. Espera al workflow **Deploy to GitHub Pages** y activa **Enforce HTTPS**.
 
 No se configura DNS antes de elegir y comprar el dominio.
 

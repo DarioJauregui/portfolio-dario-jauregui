@@ -16,6 +16,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      SITE_URL: ${{ vars.SITE_URL }}
+      BASE_PATH: ${{ vars.BASE_PATH }}
     permissions:
       contents: read
     steps:
