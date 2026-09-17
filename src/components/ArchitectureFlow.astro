@@ -2,13 +2,14 @@
 interface Props {
   steps: string[];
   compact?: boolean;
+  label?: string;
 }
-const { steps, compact = false } = Astro.props;
+const { steps, compact = false, label = "Architecture flow" } = Astro.props;
 ---
 
 <ol
   class:list={["architecture", { "architecture--compact": compact }]}
-  aria-label="Architecture flow"
+  aria-label={label}
 >
   {steps.map((step, index) => (
     <li>

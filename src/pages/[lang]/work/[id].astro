@@ -50,107 +50,90 @@ const nextProject = featured[(currentIndex + 1) % featured.length]!.data;
       <a class="back-link" href={withBase(`/${lang}/#work`)}>
         ← {t.back}
       </a>
-      <div class="case-kicker">
-        <span>{String(data.order).padStart(2, "0")}</span>
-        <div>
-          <b>{data.code}</b>
-          <small>{data.period[lang]}</small>
-        </div>
+      <div class="case-meta">
+        <span>{data.code}</span>
+        <span>{data.period[lang]}</span>
+        <span>{data.status[lang]}</span>
       </div>
       <div class="case-title-grid">
         <div>
-          <p class="eyebrow">{data.status[lang]}</p>
           <h1>{copy.title}</h1>
+          <p>{copy.strapline}</p>
         </div>
-        <p>{copy.strapline}</p>
+        <ProjectVisual code={data.code} lang={lang} compact />
       </div>
     </header>
 
-    <div class="case-visual shell">
-      <ProjectVisual code={data.code} lang={lang} />
-    </div>
-
-    <section
-      class="case-section shell case-grid hairline"
-      aria-labelledby="context-title"
-    >
-      <div class="case-aside">
-        <span>01</span>
+    <article class="case-article shell">
+      <section class="case-article-section" aria-labelledby="context-title">
         <h2 id="context-title">
-          {lang === "es" ? "Contexto y problema" : "Context and problem"}
+          {lang === "es" ? "Contexto y necesidad" : "Context and need"}
         </h2>
-      </div>
-      <div class="case-copy case-copy--lead">
-        <p>{copy.context}</p>
-        <p>{copy.problem}</p>
-      </div>
-    </section>
+        <div class="case-prose">
+          <p>{copy.context}</p>
+          <p>{copy.problem}</p>
+        </div>
+      </section>
 
-    <section
-      class="case-section shell case-grid hairline"
-      aria-labelledby="system-title"
-    >
-      <div class="case-aside">
-        <span>02</span>
-        <h2 id="system-title">
-          {lang === "es" ? "Sistema construido" : "System built"}
+      <section class="case-article-section" aria-labelledby="solution-title">
+        <h2 id="solution-title">
+          {lang === "es" ? "Solución construida" : "Solution built"}
         </h2>
-      </div>
-      <div class="case-copy">
-        <p class="case-large">{copy.system}</p>
-        <h3>{t.architecture}</h3>
-        <ArchitectureFlow steps={data.architecture[lang]} />
-      </div>
-    </section>
+        <div class="case-prose">
+          <p>{copy.system}</p>
+        </div>
+      </section>
 
-    <section
-      class="case-section shell case-grid hairline"
-      aria-labelledby="contribution-title"
-    >
-      <div class="case-aside">
-        <span>03</span>
+      <section
+        class="case-article-section"
+        aria-labelledby="architecture-title"
+      >
+        <h2 id="architecture-title">
+          {lang === "es" ? "Cómo funciona" : "How it works"}
+        </h2>
+        <div class="case-prose case-prose--wide">
+          <ArchitectureFlow
+            steps={data.architecture[lang]}
+            label={t.architecture}
+          />
+        </div>
+      </section>
+
+      <section
+        class="case-article-section"
+        aria-labelledby="contribution-title"
+      >
         <h2 id="contribution-title">{t.contribution}</h2>
-      </div>
-      <div class="case-copy split-copy">
-        <div>
+        <div class="case-prose">
           <p>{copy.contribution}</p>
         </div>
-        <div>
-          <h3>{t.technologies}</h3>
-          <ul class="stack-list">
-            {data.stack.map((item) => (
-              <li>{item}</li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="case-section case-impact" aria-labelledby="impact-title">
-      <div class="shell case-grid">
-        <div class="case-aside">
-          <span>04</span>
-          <h2 id="impact-title">{t.impact}</h2>
+      <section class="case-article-section" aria-labelledby="result-title">
+        <h2 id="result-title">{lang === "es" ? "Resultado" : "Outcome"}</h2>
+        <div class="case-prose">
+          <p class="case-result">{copy.impact}</p>
         </div>
-        <div class="case-copy">
-          <p class="impact-statement">{copy.impact}</p>
-          <div class="publication-boundary">
-            <h3>{t.confidentiality}</h3>
-            <p>{copy.confidentiality}</p>
-          </div>
-        </div>
-      </div>
-    </section>
+      </section>
+
+      <section
+        class="case-article-section case-technologies"
+        aria-labelledby="tech-title"
+      >
+        <h2 id="tech-title">{t.technologies}</h2>
+        <p>{data.stack.join(" · ")}</p>
+      </section>
+    </article>
 
     <nav
-      class="next-project shell hairline"
+      class="next-project shell"
       aria-label={lang === "es" ? "Siguiente proyecto" : "Next project"}
     >
-      <span>{lang === "es" ? "Siguiente case study" : "Next case study"}</span>
+      <span>{lang === "es" ? "Siguiente proyecto" : "Next project"}</span>
       <a href={withBase(`/${lang}/work/${nextProject.code.toLowerCase()}/`)}>
         <small>{nextProject.code}</small>
         <strong>{nextProject.copy[lang].title}</strong>
-        <i>→</i>
+        <i aria-hidden="true">→</i>
       </a>
     </nav>
   </main>

@@ -5,97 +5,62 @@ interface Props {
   compact?: boolean;
 }
 const { code, lang, compact = false } = Astro.props;
-const labels = {
-  p001:
+const diagrams = {
+  P001: {
+    es: ["Fuentes operativas", "Modelo común", "Productos y acceso"],
+    en: ["Operational sources", "Shared model", "Products and access"],
+  },
+  P002: {
+    es: ["Flujos en vivo", "API y contexto", "Pantalla continua"],
+    en: ["Live streams", "API and context", "Continuous display"],
+  },
+  P003: {
+    es: ["Calendario y contexto", "Predicción", "Escenarios y explicación"],
+    en: ["Calendar and context", "Forecast", "Scenarios and explanation"],
+  },
+  P007: {
+    es: ["Ficheros", "Reglas de conciliación", "Excepciones para revisión"],
+    en: ["Files", "Reconciliation rules", "Exceptions for review"],
+  },
+} as const;
+const captions = {
+  P001:
     lang === "es"
-      ? ["fuentes", "datos", "productos"]
-      : ["sources", "data", "products"],
-  p002:
+      ? "Del dato disperso al producto compartido"
+      : "From scattered data to a shared product",
+  P002:
     lang === "es"
-      ? ["ahora", "+12,4%", "cada segundo"]
-      : ["now", "+12.4%", "every second"],
-  p003: ["WAPE", "9.3%", "45.8%"],
-  p007:
+      ? "Información viva preparada para ser entendida"
+      : "Live information made understandable",
+  P003:
     lang === "es"
-      ? ["entradas", "reglas", "excepciones"]
-      : ["inputs", "rules", "exceptions"],
-}[code.toLowerCase() as "p001" | "p002" | "p003" | "p007"] ?? [
-  code,
-  "LAB",
-  "01",
-];
+      ? "Predicción, escenarios y explicación en un mismo flujo"
+      : "Forecasting, scenarios and explanation in one flow",
+  P007:
+    lang === "es"
+      ? "La revisión humana se concentra en las diferencias"
+      : "Human review focuses on differences",
+} as const;
+const diagram = diagrams[code as keyof typeof diagrams]?.[lang] ?? [code];
+const caption = captions[code as keyof typeof captions] ?? code;
 ---
 
-<div
+<figure
   class:list={[
     "project-visual",
     `project-visual--${code.toLowerCase()}`,
     { "project-visual--compact": compact },
   ]}
-  aria-hidden="true"
+  aria-label={caption}
 >
-  <div class="visual-topline">
-    <span>{code}</span>
-    <span>DJ / SYSTEMS</span>
-  </div>
-  <div class="visual-stage">
-    {code === "P001" && (
-      <>
-        <div class="data-column data-column--a">
-          <i></i>
-          <i></i>
-          <i></i>
-        </div>
-        <div class="data-core">
-          <b>20</b>
-          <span>dashboards</span>
-        </div>
-        <div class="data-column data-column--b">
-          <i></i>
-          <i></i>
-          <i></i>
-          <i></i>
-        </div>
-      </>
-    )}
-    {code === "P002" && (
-      <>
-        <div class="live-number">
-          24.8<span>k</span>
-        </div>
-        <div class="live-bars">
-          {[38, 58, 44, 73, 64, 86, 78, 92].map((height) => (
-            <i style={`height:${height}%`}></i>
-          ))}
-        </div>
-      </>
-    )}
-    {code === "P003" && (
-      <>
-        <div class="scenario-line scenario-line--base"></div>
-        <div class="scenario-line scenario-line--model"></div>
-        <div class="scenario-score">
-          <span>WAPE</span>
-          <b>9.3%</b>
-        </div>
-      </>
-    )}
-    {code === "P007" && (
-      <>
-        <div class="reconcile-list">
-          {[1, 2, 3, 4, 5].map((item) => (
-            <i class={item === 4 ? "is-exception" : ""}></i>
-          ))}
-        </div>
-        <div class="reconcile-mark">
-          10<span>+ days / month</span>
-        </div>
-      </>
-    )}
-  </div>
-  <div class="visual-labels">
-    {labels.map((label) => (
-      <span>{label}</span>
+  <div class="visual-code">{code}</div>
+  <div class="visual-flow">
+    {diagram.map((step, index) => (
+      <div class="visual-step">
+        <span>{step}</span>
+        {index < diagram.length - 1 && <i aria-hidden="true">→</i>}
+      </div>
     ))}
   </div>
-</div>
+  <figcaption>{caption}</figcaption>
+</figure>

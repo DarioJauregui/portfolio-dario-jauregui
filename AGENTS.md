@@ -2,10 +2,13 @@
 
 ## Dirección visual
 
-- Estética editorial, técnica, industrial, minimalista y premium.
+- Estética editorial, técnica, limpia y contemporánea; debe sentirse como el portfolio de una persona que construye productos reales, no como una web conceptual.
 - Fondo blanco roto, texto casi negro y `#6D130E` como único acento principal.
-- Tipografía fuerte, mucho espacio, líneas finas, números grandes y diagramas claros.
-- Evitar gradientes, terminal/cyberpunk, glassmorphism, tarjetas redondeadas repetitivas, iconos decorativos y patrones SaaS genéricos.
+- Manrope Variable autoalojada como familia principal e IBM Plex Mono solo para metadatos técnicos pequeños.
+- Escalas moderadas, ritmo compacto, texto narrativo de 60-75 caracteres y diagramas funcionales fieles.
+- El granate se reserva para enlaces, indicadores y detalles pequeños. No usar superficies oscuras o granates completas como recurso habitual.
+- Evitar cifras gigantes, bloques con bordes, líneas constantes, alternancia artificial, etiquetas en mayúsculas, gradientes, terminal/cyberpunk, glassmorphism, iconos decorativos y patrones SaaS genéricos.
+- Los proyectos destacados forman una cuadrícula editorial estable de dos columnas en escritorio y una en móvil; no alternar composiciones sin motivo.
 - Diseñar móvil, tablet y escritorio. Respetar teclado, foco visible, contraste y `prefers-reduced-motion`.
 
 ## Arquitectura y contenido
@@ -15,12 +18,16 @@
 - Toda entrada debe superar el esquema de `src/content.config.ts` y contener ES/EN equivalentes.
 - Featured: P001, P002, P003 y P007. Timeline: P004, P005, P006 y P009. Lab: P008 y L001.
 - Para añadir un proyecto, crea una entrada JSON, completa ambos idiomas, asígnale orden y ejecuta las comprobaciones. No cambies componentes para introducir datos editoriales.
+- Los case studies son artículos continuos y compactos: contexto, solución, funcionamiento, contribución, resultado y tecnologías. No recuperar las antiguas pantallas numeradas.
+- La home mantiene este orden: hero, proyectos destacados, sobre mí y trayectoria, otros proyectos, Lab, contacto.
 
 ## Confidencialidad
 
 - `Assets/` y especialmente `Assets/raw/` son fuente local de solo lectura y nunca se versionan.
 - No publicar datos reales, credenciales, URLs o rutas internas, endpoints, nombres de equipos, identificadores operativos, artefactos de modelos ni infraestructura sensible.
 - No publicar logotipos ni capturas corporativas sin autorización clara. Usar datos sintéticos y diagramas propios.
+- Las restricciones editoriales y de confidencialidad permanecen en los datos y en `PUBLISHING_REVIEW.md`; nunca se muestran al visitante.
+- No usar métricas inventadas o decorativas. Las cifras aprobadas aparecen con tamaño moderado y contexto, una sola vez por pieza.
 - P003 es un MVP interno y proyecto aplicado. P006 debe acreditar el desarrollo externo de formularios. P008 y P009 no tienen afirmaciones de homologación, certificación o despliegue de seguridad.
 - Mantener `PUBLISHING_REVIEW.md` actualizado con cada recurso público.
 

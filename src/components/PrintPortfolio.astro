@@ -14,21 +14,33 @@ interface Props {
 const { lang, featured, timeline, lab } = Astro.props;
 const t = ui[lang];
 const p = profile[lang];
+const featuredGroups = [featured.slice(0, 2), featured.slice(2, 4)];
+const evidence = {
+  P001:
+    lang === "es"
+      ? "≈ 7 áreas de negocio · ≈ 20 paneles"
+      : "≈ 7 business areas · ≈ 20 dashboards",
+  P003:
+    lang === "es"
+      ? "WAPE 9,3 % · mejora ≈ 45,8 % · valoración 4,5/5"
+      : "9.3% WAPE · ≈ 45.8% improvement · 4.5/5 rating",
+  P007:
+    lang === "es"
+      ? "> 10 jornadas de trabajo ahorradas al mes"
+      : "> 10 working days saved each month",
+} as const;
 ---
 
 <main class="print-portfolio">
   <section class="print-cover">
     <div class="print-cover-top">
       <span>PORTFOLIO / 2026</span>
-      <span>ES ↔ EN</span>
+      <span>{lang.toUpperCase()}</span>
     </div>
     <div>
       <p class="print-eyebrow">{site.role}</p>
-      <h1>
-        Darío
-        <br />
-        <em>Jáuregui</em>
-      </h1>
+      <h1>{site.name}</h1>
+      <p class="print-location">{t.location}</p>
       <p class="print-statement">{t.statement}</p>
     </div>
     <div class="print-cover-bottom">
@@ -40,25 +52,21 @@ const p = profile[lang];
 
   <section class="print-page print-overview">
     <header>
-      <span>00</span>
-      <h2>{lang === "es" ? "Perfil y archivo" : "Profile and archive"}</h2>
+      <span>{lang === "es" ? "PERFIL" : "PROFILE"}</span>
+      <h2>{t.profile}</h2>
     </header>
     <p class="print-lead">{p.intro}</p>
+    <p class="print-body-copy">{p.context}</p>
     <div class="print-two-columns">
       <div>
         <h3>{lang === "es" ? "Áreas" : "Areas"}</h3>
-        <ul class="print-tags">
-          {specialties.map((item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
+        <p class="print-inline-list">{specialties.join(" · ")}</p>
       </div>
       <div>
-        <h3>{lang === "es" ? "Trabajo seleccionado" : "Selected work"}</h3>
+        <h3>{t.selected}</h3>
         <ol class="print-index">
           {featured.map(({ data }) => (
             <li>
-              <span>{String(data.order).padStart(2, "0")}</span>
               <b>{data.code}</b>
               {data.copy[lang].title}
             </li>
@@ -78,107 +86,61 @@ const p = profile[lang];
     </div>
   </section>
 
-  {featured.map(({ data }) => {
-    const copy = data.copy[lang];
-    return (
-      <section class="print-page print-project">
-        <header class="print-project-header">
-          <div>
-            <span>{String(data.order).padStart(2, "0")}</span>
-            <b>{data.code}</b>
-          </div>
-          <div>
-            <small>{data.period[lang]}</small>
-            <small>{data.status[lang]}</small>
-          </div>
-        </header>
-        <h2>{copy.title}</h2>
-        <p class="print-deck">{copy.strapline}</p>
-        <div class="print-metric" data-code={data.code}>
-          {data.code === "P001" && (
-            <>
-              <b>≈ 7</b>
-              <span>
-                {lang === "es" ? "áreas de negocio" : "business areas"}
-              </span>
-              <b>≈ 20</b>
-              <span>dashboards</span>
-            </>
-          )}
-          {data.code === "P002" && (
-            <>
-              <b>1 s</b>
-              <span>{lang === "es" ? "actualización" : "refresh"}</span>
-              <b>24/7</b>
-              <span>
-                {lang === "es" ? "lectura continua" : "continuous view"}
-              </span>
-            </>
-          )}
-          {data.code === "P003" && (
-            <>
-              <b>9.3%</b>
-              <span>WAPE</span>
-              <b>45.8%</b>
-              <span>
-                {lang === "es" ? "mejora aprox." : "approx. improvement"}
-              </span>
-            </>
-          )}
-          {data.code === "P007" && (
-            <>
-              <b>&gt; 10</b>
-              <span>
-                {lang === "es" ? "jornadas / mes" : "working days / month"}
-              </span>
-              <b>01</b>
-              <span>
-                {lang === "es" ? "flujo repetible" : "repeatable flow"}
-              </span>
-            </>
-          )}
-        </div>
-        <div class="print-case-grid">
-          <article>
-            <h3>{t.problem}</h3>
-            <p>{copy.problem}</p>
+  {featuredGroups.map((group) => (
+    <section class="print-page print-projects-page">
+      {group.map(({ data }) => {
+        const copy = data.copy[lang];
+        const result = evidence[data.code as keyof typeof evidence];
+        return (
+          <article class="print-project">
+            <header class="print-project-header">
+              <div>
+                <b>{data.code}</b>
+                <small>{data.period[lang]}</small>
+              </div>
+              <small>{data.status[lang]}</small>
+            </header>
+            <h2>{copy.title}</h2>
+            <p class="print-deck">{copy.strapline}</p>
+            {result && <p class="print-evidence">{result}</p>}
+            <div class="print-story">
+              <div>
+                <h3>{lang === "es" ? "Necesidad" : "Need"}</h3>
+                <p>{copy.problem}</p>
+              </div>
+              <div>
+                <h3>{lang === "es" ? "Solución" : "Solution"}</h3>
+                <p>{copy.system}</p>
+              </div>
+              <div>
+                <h3>{t.contribution}</h3>
+                <p>{copy.contribution}</p>
+              </div>
+              <div>
+                <h3>{lang === "es" ? "Resultado" : "Outcome"}</h3>
+                <p>{copy.impact}</p>
+              </div>
+            </div>
+            <div class="print-flow" aria-label={t.architecture}>
+              {data.architecture[lang].map((step, index) => (
+                <span>
+                  <i>{String(index + 1).padStart(2, "0")}</i>
+                  {step}
+                </span>
+              ))}
+            </div>
+            <p class="print-tech">
+              <b>{t.technologies}</b> · {data.stack.join(" · ")}
+            </p>
           </article>
-          <article>
-            <h3>{t.system}</h3>
-            <p>{copy.system}</p>
-          </article>
-          <article>
-            <h3>{t.contribution}</h3>
-            <p>{copy.contribution}</p>
-          </article>
-          <article>
-            <h3>{t.impact}</h3>
-            <p>{copy.impact}</p>
-          </article>
-        </div>
-        <div class="print-flow">
-          {data.architecture[lang].map((step, index) => (
-            <span>
-              <i>{String(index + 1).padStart(2, "0")}</i>
-              {step}
-            </span>
-          ))}
-        </div>
-        <div class="print-project-footer">
-          <p>
-            <b>{t.technologies}</b> · {data.stack.join(" · ")}
-          </p>
-          <p>
-            <b>{t.confidentiality}</b> · {copy.confidentiality}
-          </p>
-        </div>
-      </section>
-    );
-  })}
+        );
+      })}
+    </section>
+  ))}
 
   <section class="print-page print-archive">
     <header>
-      <span>05</span>
+      <span>{lang === "es" ? "ARCHIVO" : "ARCHIVE"}</span>
       <h2>{t.allWork}</h2>
     </header>
     <div class="print-timeline">
@@ -190,8 +152,8 @@ const p = profile[lang];
           </span>
           <div>
             <h3>{data.copy[lang].title}</h3>
-            <p>{data.copy[lang].system}</p>
-            <strong>{data.copy[lang].impact}</strong>
+            <p>{data.copy[lang].strapline}</p>
+            <small>{data.stack.slice(0, 3).join(" · ")}</small>
           </div>
         </article>
       ))}
@@ -203,7 +165,7 @@ const p = profile[lang];
           <span>{data.code}</span>
           <h3>{data.copy[lang].title}</h3>
           <p>{data.copy[lang].strapline}</p>
-          <small>{data.copy[lang].confidentiality}</small>
+          <small>{data.architecture[lang].join(" → ")}</small>
         </article>
       ))}
     </div>
@@ -211,8 +173,8 @@ const p = profile[lang];
 
   <section class="print-page print-contact">
     <div>
-      <span>06</span>
-      <h2>{t.contact}</h2>
+      <span>{lang === "es" ? "CONTACTO" : "CONTACT"}</span>
+      <h2>{lang === "es" ? "¿Hablamos?" : "Let's talk"}</h2>
       <p>{t.contactLead}</p>
     </div>
     <address>

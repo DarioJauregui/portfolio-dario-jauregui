@@ -22,9 +22,13 @@ const featured = allProjects
   .sort((a, b) => a.data.order - b.data.order);
 const timeline = allProjects
   .filter(({ data }) => data.level === "project")
-  .sort((a, b) => a.data.order - b.data.order);
+  .sort((a, b) => b.data.period[lang].localeCompare(a.data.period[lang]));
 const lab = labEntries.sort((a, b) => a.data.order - b.data.order);
 const p = profile[lang];
+const cvUrl = withBase(`/downloads/dario-jauregui-cv-${lang}.pdf`);
+const portfolioUrl = withBase(
+  `/downloads/dario-jauregui-portfolio-${lang}.pdf`,
+);
 ---
 
 <BaseLayout lang={lang} description={t.statement} path="/">
@@ -32,35 +36,29 @@ const p = profile[lang];
 
   <main id="main">
     <section class="hero shell" aria-labelledby="hero-title">
-      <div>
-        <p class="eyebrow">{t.eyebrow}</p>
-        <h1 id="hero-title">
-          Darío <span>Jáuregui</span>
-        </h1>
-      </div>
-      <div class="hero-bottom">
+      <p class="hero-kicker">{t.eyebrow}</p>
+      <h1 id="hero-title">{site.name}</h1>
+      <div class="hero-intro">
         <div>
           <p class="hero-role">{site.role}</p>
-          <p class="statement">{t.statement}</p>
+          <p class="hero-location">{t.location}</p>
         </div>
-        <a class="arrow-link" href="#work">
-          {t.viewWork}
-        </a>
+        <div>
+          <p class="statement">{t.statement}</p>
+          <a class="arrow-link" href="#work">
+            {t.viewWork}
+          </a>
+        </div>
       </div>
     </section>
 
-    <section
-      class="section shell hairline"
-      id="work"
-      aria-labelledby="work-title"
-    >
+    <section class="section shell" id="work" aria-labelledby="work-title">
       <SectionHeader
-        number="01"
         title={t.selected}
         intro={
           lang === "es"
-            ? "Cuatro sistemas donde arquitectura, producto e impacto se encuentran."
-            : "Four systems where architecture, product thinking and impact meet."
+            ? "Una selección de productos donde datos, software y decisiones de ingeniería se convierten en herramientas reales."
+            : "A selection of products where data, software and engineering decisions become practical tools."
         }
       />
       <div class="featured-grid">
@@ -70,181 +68,159 @@ const p = profile[lang];
       </div>
     </section>
 
-    <section
-      class="section shell hairline"
-      id="timeline"
-      aria-labelledby="timeline-title"
-    >
-      <SectionHeader
-        number="02"
-        title={t.timeline}
-        intro={
-          lang === "es"
-            ? "Sistemas aplicados a reporting, gobierno, digitalización y prevención."
-            : "Applied systems spanning reporting, governance, digitisation and prevention."
-        }
-      />
-      <div class="timeline-list">
-        {timeline.map(({ data }) => {
-          const copy = data.copy[lang];
-          return (
-            <details class="timeline-item">
-              <summary>
-                <span class="timeline-code">{data.code}</span>
-                <span class="timeline-title">{copy.title}</span>
-                <span class="timeline-period">{data.period[lang]}</span>
-                <span class="timeline-toggle" aria-hidden="true">
-                  +
-                </span>
-              </summary>
-              <div class="timeline-content">
-                <p>{copy.system}</p>
-                <p>
-                  <strong>{t.contribution}.</strong> {copy.contribution}
-                </p>
-                <p class="timeline-impact">
-                  <strong>{t.impact}.</strong> {copy.impact}
-                </p>
-                <ArchitectureFlow steps={data.architecture[lang]} compact />
-              </div>
-            </details>
-          );
-        })}
-      </div>
-    </section>
-
-    <section class="section section--dark" id="lab" aria-labelledby="lab-title">
-      <div class="shell">
-        <SectionHeader
-          number="03"
-          title={t.lab}
-          intro={
-            lang === "es"
-              ? "Pruebas físicas, sistemas preventivos y aprendizaje mediante prototipos."
-              : "Physical experiments, preventive systems and learning through prototypes."
-          }
-        />
-        <div class="lab-grid">
-          {lab.map(({ data }, index) => {
-            const copy = data.copy[lang];
-            return (
-              <article class="lab-card">
-                <div class="lab-figure" aria-hidden="true">
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <div
-                    class:list={[
-                      "lab-device",
-                      { "lab-device--rain": data.code === "P008" },
-                    ]}
-                  >
-                    <i></i>
-                    <i></i>
-                    <i></i>
-                  </div>
-                </div>
-                <div>
-                  <p class="eyebrow">
-                    {data.code} · {data.status[lang]}
-                  </p>
-                  <h3>{copy.title}</h3>
-                  <p>{copy.strapline}</p>
-                  <ul class="tag-list">
-                    {data.stack.map((item) => (
-                      <li>{item}</li>
-                    ))}
-                  </ul>
-                  <p class="confidentiality-note">{copy.confidentiality}</p>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-
-    <section
-      class="section shell hairline"
-      id="profile"
-      aria-labelledby="profile-title"
-    >
-      <SectionHeader number="04" title={t.profile} intro={t.profileLead} />
-      <div class="profile-grid">
-        <div class="profile-intro">
+    <section class="section shell" id="profile" aria-labelledby="profile-title">
+      <SectionHeader title={t.profile} intro={t.profileLead} />
+      <div class="profile-layout">
+        <div class="profile-copy">
           <p>{p.intro}</p>
           <p>{p.context}</p>
-          <ul class="specialties">
+          <p>{p.focus}</p>
+          <p class="profile-scenario">{p.scenario}</p>
+          <ul class="specialties" aria-label={t.technologies}>
             {specialties.map((item) => (
               <li>{item}</li>
             ))}
           </ul>
         </div>
-        <div class="experience-list">
-          {p.experience.map((item) => (
-            <article>
-              <p class="eyebrow">{item.period}</p>
-              <h3>{item.role}</h3>
-              <p class="organisation">{item.organisation}</p>
-              <p>{item.detail}</p>
-            </article>
-          ))}
-          <div class="education">
-            <p class="eyebrow">{lang === "es" ? "Formación" : "Education"}</p>
-            <ul>
-              {p.education.map((item) => (
-                <li>{item}</li>
-              ))}
-            </ul>
+        <div class="trajectory">
+          <h3>{lang === "es" ? "Trayectoria" : "Experience"}</h3>
+          <div class="trajectory-list">
+            {p.experience.map((item) => (
+              <article>
+                <p class="trajectory-period">{item.period}</p>
+                <div>
+                  <h4>{item.role}</h4>
+                  <p class="organisation">{item.organisation}</p>
+                  <p>{item.detail}</p>
+                </div>
+              </article>
+            ))}
           </div>
+          <h3>{lang === "es" ? "Formación" : "Education"}</h3>
+          <ul class="education-list">
+            {p.education.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+          <a
+            class="cv-link"
+            href={cvUrl}
+            download
+            aria-label={`${t.downloadCv}`}
+          >
+            {t.downloadCv}
+          </a>
         </div>
       </div>
     </section>
 
     <section
-      class="section contact-section shell hairline"
+      class="section shell"
+      id="timeline"
+      aria-labelledby="timeline-title"
+    >
+      <SectionHeader
+        title={t.timeline}
+        intro={
+          lang === "es"
+            ? "Reporting, gobierno del dato, digitalización y prevención aplicados a necesidades concretas."
+            : "Reporting, data governance, digitisation and prevention applied to specific needs."
+        }
+      />
+      <div class="project-list">
+        {timeline.map(({ data }) => {
+          const copy = data.copy[lang];
+          return (
+            <article class="project-row">
+              <div class="project-row-meta">
+                <span>{data.period[lang]}</span>
+                <span>{data.code}</span>
+              </div>
+              <div>
+                <h3>{copy.title}</h3>
+                <p>{copy.strapline}</p>
+              </div>
+              <p class="project-row-stack">
+                {data.stack.slice(0, 3).join(" · ")}
+              </p>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+
+    <section class="section shell" id="lab" aria-labelledby="lab-title">
+      <SectionHeader
+        title={t.lab}
+        intro={
+          lang === "es"
+            ? "Prototipos para seguir aprendiendo donde el software se encuentra con sensores, electrónica y mecanismos."
+            : "Prototypes for continued learning where software meets sensors, electronics and mechanisms."
+        }
+      />
+      <div class="lab-grid">
+        {lab.map(({ data }) => {
+          const copy = data.copy[lang];
+          return (
+            <article class="lab-card">
+              <div class="lab-meta">
+                <span>{data.code}</span>
+                <span>{data.status[lang]}</span>
+              </div>
+              <h3>{copy.title}</h3>
+              <p>{copy.strapline}</p>
+              <ArchitectureFlow
+                steps={data.architecture[lang]}
+                compact
+                label={t.architecture}
+              />
+              <p class="lab-stack">{data.stack.join(" · ")}</p>
+            </article>
+          );
+        })}
+      </div>
+    </section>
+
+    <section
+      class="section contact-section shell"
       id="contact"
       aria-labelledby="contact-title"
     >
-      <SectionHeader number="05" title={t.contact} intro={t.contactLead} />
-      <div class="contact-grid">
-        <a class="contact-primary" href={`mailto:${site.email}`}>
-          <span>Email</span>
-          <strong>{site.email}</strong>
-          <i>↗</i>
+      <div class="contact-copy">
+        <h2 id="contact-title">
+          {lang === "es" ? "¿Hablamos?" : "Let's talk"}
+        </h2>
+        <p>{t.contactLead}</p>
+      </div>
+      <div class="contact-details">
+        <a class="contact-email" href={`mailto:${site.email}`}>
+          {site.email}
         </a>
         <div class="contact-links">
           <a href={site.linkedin} rel="me">
-            LinkedIn <span>↗</span>
+            LinkedIn ↗
           </a>
           <a href={site.github} rel="me">
-            GitHub <span>↗</span>
+            GitHub ↗
           </a>
-        </div>
-        <div class="download-links">
-          <a
-            href={withBase(`/downloads/dario-jauregui-cv-${lang}.pdf`)}
-            download
-          >
-            {t.downloadCv} ({lang.toUpperCase()}) <span>↓</span>
+          <a href={cvUrl} download>
+            {lang === "es" ? "CV en PDF ↗" : "Résumé PDF ↗"}
           </a>
-          <a
-            href={withBase(`/downloads/dario-jauregui-portfolio-${lang}.pdf`)}
-            download
-          >
-            {t.downloadPortfolio} ({lang.toUpperCase()}) <span>↓</span>
-          </a>
-          <a href={withBase(`/${lang}/print/`)}>
-            {t.printView} <span>↗</span>
+          <a href={portfolioUrl} download>
+            {t.downloadPortfolio} ↗
           </a>
         </div>
       </div>
     </section>
   </main>
 
-  <footer class="footer shell hairline">
+  <footer class="footer shell">
     <p>
       © {new Date().getFullYear()} {site.name}
     </p>
-    <p>{site.role}</p>
+    <p>
+      {site.role} · {t.location}
+    </p>
     <a href="#main">{lang === "es" ? "Volver arriba ↑" : "Back to top ↑"}</a>
   </footer>
 </BaseLayout>

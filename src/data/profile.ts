@@ -1,9 +1,13 @@
 export const profile = {
   es: {
     intro:
-      "Ingeniero de datos y automatización centrado en convertir problemas operativos en sistemas fiables. Combino ingeniería de datos, inteligencia artificial, backend, automatización de procesos y visualización con un objetivo: que las soluciones se puedan usar y mantener en entornos reales.",
+      "Soy ingeniero de datos y automatización, con formación en Ingeniería Electrónica, Robótica y Mecatrónica y un Máster Universitario en Inteligencia Artificial. También cursé Robótica Avanzada en la Université de Liège.",
     context:
-      "Desde 2024 trabajo en un entorno ferroviario real, construyendo productos internos de datos, automatización, analítica e IA desde la definición hasta su evolución en producción.",
+      "Esa combinación de software, datos y sistemas físicos define mi forma de trabajar: entender el problema completo, construir la solución y dejarla preparada para evolucionar. Desde 2024 desarrollo productos internos en un entorno ferroviario real, combinando ingeniería de datos, backend, automatización, inteligencia artificial aplicada y visualización.",
+    focus:
+      "Me interesa especialmente convertir procesos complejos en herramientas fiables que otras personas puedan utilizar y mantener. Fuera del trabajo continúo explorando electrónica, prototipado y robótica educativa.",
+    scenario:
+      "Metro Scenario Studio conecta mi trabajo profesional con el Máster en Inteligencia Artificial: un problema operativo real convertido en un sistema de predicción, escenarios y explicación.",
     experience: [
       {
         period: "2024 - Actualidad",
@@ -28,9 +32,13 @@ export const profile = {
   },
   en: {
     intro:
-      "Data and automation engineer focused on turning operational problems into reliable systems. I combine data engineering, artificial intelligence, backend development, process automation and visualisation with one goal: solutions that people can use and maintain in real environments.",
+      "I am a data and automation engineer with a background in Electronics, Robotics and Mechatronics and a Master's Degree in Artificial Intelligence. I also studied Advanced Robotics at the Université de Liège.",
     context:
-      "Since 2024, I have worked in a real railway environment, building internal data, automation, analytics and AI products from problem definition through production evolution.",
+      "That combination of software, data and physical systems shapes how I work: understand the whole problem, build the solution and leave it ready to evolve. Since 2024, I have developed internal products in a real railway environment across data engineering, backend development, automation, applied AI and visualisation.",
+    focus:
+      "I am particularly interested in turning complex processes into reliable tools that other people can use and maintain. Outside work, I continue to explore electronics, prototyping and educational robotics.",
+    scenario:
+      "Metro Scenario Studio connects my professional work with the Master's Degree in Artificial Intelligence: a real operational problem developed into a forecasting, scenario and explanation system.",
     experience: [
       {
         period: "2024 - Present",

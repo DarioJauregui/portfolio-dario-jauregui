@@ -11,7 +11,10 @@ test("home, language and selected work are navigable", async ({ page }) => {
   await expect(page.locator(".featured-card")).toHaveCount(4);
   await page.getByRole("link", { name: "EN", exact: true }).click();
   await expect(page).toHaveURL(/\/en\/$/);
-  await expect(page.getByText("Selected work", { exact: true })).toBeVisible();
+  await expect(
+    page.getByText("Featured projects", { exact: true }),
+  ).toBeVisible();
+  await expect(page.locator("body")).not.toContainText("24.8k");
   expect(errors).toEqual([]);
 });
 
@@ -22,6 +25,10 @@ for (const code of ["p001", "p002", "p003", "p007"]) {
   }) => {
     await page.goto(`es/work/${code}/`);
     await expect(page.locator("main.case-study h1")).toBeVisible();
+    await expect(page.locator("body")).not.toContainText(
+      "Límites de publicación",
+    );
+    await expect(page.locator("body")).not.toContainText("Internal safe");
     expect((await request.get(`es/print/`)).ok()).toBeTruthy();
     expect((await request.get(`en/print/`)).ok()).toBeTruthy();
   });

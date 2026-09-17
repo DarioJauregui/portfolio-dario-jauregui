@@ -16,9 +16,9 @@ const alternate = lang === "es" ? "en" : "es";
   <a
     class="site-mark"
     href={withBase(`/${lang}/`)}
-    aria-label={`DJ. - ${site.name}, ${lang === "es" ? "inicio" : "home"}`}
+    aria-label={`${site.name}, ${lang === "es" ? "inicio" : "home"}`}
   >
-    DJ<span class="site-mark-dot">.</span>
+    {site.name}
   </a>
   <nav
     class="nav"
