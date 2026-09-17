@@ -16,7 +16,7 @@ const localeCopy = z.object({
 });
 
 const projectSchema = z.object({
-  code: z.string().regex(/^(P|L)\d{3}$/),
+  code: z.string().regex(/^P\d{3}$/),
   order: z.number().int().positive(),
   period: z.object({ es: z.string(), en: z.string() }),
   level: z.enum(["featured", "project", "lab"]),

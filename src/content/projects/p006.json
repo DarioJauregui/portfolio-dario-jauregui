@@ -1,45 +1,46 @@
 {
   "code": "P006",
-  "order": 5,
-  "period": { "es": "2026", "en": "2026" },
+  "order": 6,
+  "period": { "es": "2025", "en": "2025" },
   "level": "project",
-  "status": { "es": "Trabajo colaborativo", "en": "Collaborative delivery" },
+  "status": {
+    "es": "Sistema de reporting periódico",
+    "en": "Recurring reporting system"
+  },
   "architecture": {
     "es": [
-      "Formularios",
-      "Integración",
-      "Normalización ETL",
-      "Seguimiento",
-      "Análisis y tratamiento"
+      "Fuentes de explotación",
+      "Reglas reproducibles",
+      "Indicadores y ratios",
+      "Informe mensual"
     ],
     "en": [
-      "Forms",
-      "Integration",
-      "ETL normalisation",
-      "Tracking",
-      "Analysis and handling"
+      "Operational sources",
+      "Reproducible rules",
+      "Indicators and ratios",
+      "Monthly report"
     ]
   },
   "copy": {
     "es": {
-      "title": "Digitalización de los procesos de atención al cliente",
-      "strapline": "Del papel a un circuito estructurado y trazable de captura, integración y tratamiento.",
-      "context": "Los procesos de atención al cliente dependían de capturas en papel y de circuitos de tratamiento difíciles de seguir.",
-      "problem": "Digitalizar el proceso requería coordinar formularios, integración, normalización y uso posterior de los datos.",
-      "system": "Las ETL normalizan los datos capturados y los preparan para seguimiento, análisis, consulta y tratamiento interno.",
-      "contribution": "Diseñé los formularios y la arquitectura de integración y automatización. Una empresa externa desarrolló los formularios web.",
-      "impact": "Sustitución de procesos en papel por un circuito estructurado y trazable.",
-      "confidentiality": "La colaboración y la autoría se describen con precisión; no se publican formularios ni flujos internos."
+      "title": "Informe mensual de explotación",
+      "strapline": "Procesos ETL reproducibles para consolidar indicadores periódicos de funcionamiento, servicio y calidad.",
+      "context": "El informe mensual remitido a la Junta de Andalucía requiere consolidar información de explotación de forma periódica.",
+      "problem": "Las reglas de cálculo complejas necesitaban repetibilidad y trazabilidad para reducir el riesgo de operaciones manuales.",
+      "system": "Diseñé y desarrollé procesos ETL y un frontend ligero que consolidan fuentes y aplican las reglas necesarias para producir indicadores y ratios.",
+      "contribution": "Definí la preparación de datos, la lógica de cálculo y la evolución del soporte de consulta asociado al informe.",
+      "impact": "Mayor repetibilidad y trazabilidad, con menor riesgo en cálculos manuales.",
+      "confidentiality": "Se explica el proceso sin publicar cifras, plantillas, fuentes ni reglas internas identificables."
     },
     "en": {
-      "title": "Digitising customer service processes",
-      "strapline": "Replacing paper with a structured and traceable capture, integration and handling flow.",
-      "context": "Customer service processes relied on paper capture and treatment workflows that were difficult to track.",
-      "problem": "Digitisation required forms, integration, normalisation and downstream use of the resulting data to work together.",
-      "system": "ETL processes normalise captured data and prepare it for tracking, analysis, consultation and internal handling.",
-      "contribution": "I designed the forms and the integration and automation architecture. An external company developed the web forms.",
-      "impact": "Paper-based processes were replaced by a structured and traceable workflow.",
-      "confidentiality": "The collaboration and authorship are stated precisely; forms and internal workflows are not published."
+      "title": "Monthly operations report",
+      "strapline": "Reproducible ETL processes consolidating recurring service, performance and quality indicators.",
+      "context": "The monthly report submitted to the Andalusian regional administration requires operational information to be consolidated regularly.",
+      "problem": "Complex calculation rules needed repeatability and traceability to reduce the risk associated with manual processing.",
+      "system": "I designed and developed ETL processes and a lightweight interface that consolidate sources and apply the required rules to produce indicators and ratios.",
+      "contribution": "I defined data preparation, calculation logic and the evolution of the supporting consultation layer.",
+      "impact": "Greater repeatability and traceability, with less risk in manual calculations.",
+      "confidentiality": "The public summary explains the process without publishing figures, templates, sources or identifiable internal rules."
     }
   }
 }

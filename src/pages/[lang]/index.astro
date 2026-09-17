@@ -76,9 +76,7 @@ const portfolioUrl = withBase(
                 {data.level === "featured" && <small>{t.fullCase}</small>}
               </span>
               <span class="project-index-period">{data.period[lang]}</span>
-              <span class="project-index-arrow" aria-hidden="true">
-                ↓
-              </span>
+              <span class="project-index-arrow" aria-hidden="true"></span>
             </a>
           </li>
         ))}
@@ -193,13 +191,13 @@ const portfolioUrl = withBase(
         </a>
         <div class="contact-links">
           <a href={site.linkedin} rel="me">
-            LinkedIn ↗
+            LinkedIn
           </a>
           <a href={site.github} rel="me">
-            GitHub ↗
+            GitHub
           </a>
           <a href={portfolioUrl} download>
-            {t.downloadPortfolio} ↗
+            {t.downloadPortfolio}
           </a>
         </div>
       </div>
@@ -213,6 +211,6 @@ const portfolioUrl = withBase(
     <p>
       {site.role} · {t.location}
     </p>
-    <a href="#main">{lang === "es" ? "Volver arriba ↑" : "Back to top ↑"}</a>
+    <a href="#main">{lang === "es" ? "Volver arriba" : "Back to top"}</a>
   </footer>
 </BaseLayout>

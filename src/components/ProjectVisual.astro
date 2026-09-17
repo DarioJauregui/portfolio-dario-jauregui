@@ -29,7 +29,7 @@ const diagrams = {
     es: ["Calendario y contexto", "Predicción", "Escenarios y explicación"],
     en: ["Calendar and context", "Forecast", "Scenarios and explanation"],
   },
-  P007: {
+  P004: {
     es: ["Ficheros", "Reglas de conciliación", "Excepciones para revisión"],
     en: ["Files", "Reconciliation rules", "Exceptions for review"],
   },
@@ -47,7 +47,7 @@ const captions = {
     lang === "es"
       ? "Predicción, escenarios y explicación en un mismo flujo"
       : "Forecasting, scenarios and explanation in one flow",
-  P007:
+  P004:
     lang === "es"
       ? "La revisión humana se concentra en las diferencias"
       : "Human review focuses on differences",
@@ -82,7 +82,7 @@ const caption = captions[code as keyof typeof captions] ?? code;
       {diagram.map((step, index) => (
         <div class="visual-step">
           <span>{step}</span>
-          {index < diagram.length - 1 && <i aria-hidden="true">→</i>}
+          {index < diagram.length - 1 && <i aria-hidden="true"></i>}
         </div>
       ))}
     </div>

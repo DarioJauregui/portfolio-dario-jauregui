@@ -49,7 +49,7 @@ const seoTitle = [copy.title, copy.subtitle].filter(Boolean).join(" - ");
   <main id="main" class="case-study">
     <header class="case-hero shell">
       <a class="back-link" href={withBase(`/${lang}/#projects`)}>
-        ← {t.back}
+        {t.back}
       </a>
       <div class="case-meta">
         <span>{data.code}</span>
@@ -144,7 +144,7 @@ const seoTitle = [copy.title, copy.subtitle].filter(Boolean).join(" - ");
       <a href={withBase(`/${lang}/work/${nextProject.code.toLowerCase()}/`)}>
         <small>{nextProject.code}</small>
         <strong>{nextProject.copy[lang].title}</strong>
-        <i aria-hidden="true">→</i>
+        <i aria-hidden="true"></i>
       </a>
     </nav>
   </main>

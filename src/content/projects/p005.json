@@ -1,45 +1,45 @@
 {
   "code": "P005",
-  "order": 7,
-  "period": { "es": "2024 - Actualidad", "en": "2024 - Present" },
+  "order": 5,
+  "period": { "es": "2026", "en": "2026" },
   "level": "project",
-  "status": { "es": "Evolución continua", "en": "Continuous evolution" },
+  "status": { "es": "Trabajo colaborativo", "en": "Collaborative delivery" },
   "architecture": {
     "es": [
-      "Fuentes dispersas",
-      "Criterios compartidos",
-      "Modelo común",
-      "Calidad y acceso",
-      "Productos de datos"
+      "Formularios",
+      "Integración",
+      "Normalización ETL",
+      "Seguimiento",
+      "Análisis y tratamiento"
     ],
     "en": [
-      "Scattered sources",
-      "Shared criteria",
-      "Common model",
-      "Quality and access",
-      "Data products"
+      "Forms",
+      "Integration",
+      "ETL normalisation",
+      "Tracking",
+      "Analysis and handling"
     ]
   },
   "copy": {
     "es": {
-      "title": "Arquitectura y gobierno corporativo del dato",
-      "strapline": "Un modelo común para convertir conjuntos dispersos en información coherente, reutilizable y gobernada.",
-      "context": "La organización disponía de numerosas fuentes y conjuntos desarrollados con estructuras y criterios diferentes.",
-      "problem": "Las duplicidades, discrepancias y definiciones no compartidas dificultaban crear nuevos productos de datos con confianza.",
-      "system": "Organicé la gran mayoría de fuentes bajo criterios comunes de estructura, transformación, medidas, calidad y acceso.",
-      "contribution": "Definí y apliqué el modelo común que prepara la información para analítica, automatización y nuevos productos internos.",
-      "impact": "Una versión más coherente y reutilizable de la información, con menos duplicidades y mayor facilidad para construir sobre datos gobernados.",
-      "confidentiality": "La presentación se limita a principios de arquitectura y gobierno, sin inventarios ni estructuras internas."
+      "title": "Digitalización de los procesos de atención al cliente",
+      "strapline": "Del papel a un circuito estructurado y trazable de captura, integración y tratamiento.",
+      "context": "Los procesos de atención al cliente dependían de capturas en papel y de circuitos de tratamiento difíciles de seguir.",
+      "problem": "Digitalizar el proceso requería coordinar formularios, integración, normalización y uso posterior de los datos.",
+      "system": "Las ETL normalizan los datos capturados y los preparan para seguimiento, análisis, consulta y tratamiento interno.",
+      "contribution": "Diseñé los formularios y la arquitectura de integración y automatización. Una empresa externa desarrolló los formularios web.",
+      "impact": "Sustitución de procesos en papel por un circuito estructurado y trazable.",
+      "confidentiality": "La colaboración y la autoría se describen con precisión; no se publican formularios ni flujos internos."
     },
     "en": {
-      "title": "Corporate data architecture and governance",
-      "strapline": "A common model turning scattered datasets into coherent, reusable and governed information.",
-      "context": "The organisation had numerous sources and datasets developed with different structures and criteria.",
-      "problem": "Duplication, discrepancies and inconsistent definitions made it difficult to build new data products with confidence.",
-      "system": "I organised most sources around shared criteria for structure, transformation, measures, quality and access.",
-      "contribution": "I defined and applied the common model that prepares information for analytics, automation and new internal products.",
-      "impact": "A more coherent and reusable version of the information, with less duplication and a stronger base for governed data products.",
-      "confidentiality": "The public presentation is limited to architecture and governance principles, without internal inventories or structures."
+      "title": "Digitising customer service processes",
+      "strapline": "Replacing paper with a structured and traceable capture, integration and handling flow.",
+      "context": "Customer service processes relied on paper capture and treatment workflows that were difficult to track.",
+      "problem": "Digitisation required forms, integration, normalisation and downstream use of the resulting data to work together.",
+      "system": "ETL processes normalise captured data and prepare it for tracking, analysis, consultation and internal handling.",
+      "contribution": "I designed the forms and the integration and automation architecture. An external company developed the web forms.",
+      "impact": "Paper-based processes were replaced by a structured and traceable workflow.",
+      "confidentiality": "The collaboration and authorship are stated precisely; forms and internal workflows are not published."
     }
   }
 }

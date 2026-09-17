@@ -9,6 +9,7 @@ test("home, language and selected work are navigable", async ({ page }) => {
   await page.goto("es/");
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Darío");
   await expect(page.locator(".project-index-list a")).toHaveCount(10);
+  await expect(page.locator("body")).not.toContainText(/[←→↑↓↗↘↖↙]/);
   await expect(page.locator(".featured-card")).toHaveCount(4);
   await expect(page.locator(".project-areas, .specialties")).toHaveCount(0);
   await expect(page.locator("body")).not.toContainText(/CV|Currículum/);
@@ -45,7 +46,7 @@ test("home, language and selected work are navigable", async ({ page }) => {
   expect(errors).toEqual([]);
 });
 
-for (const code of ["p001", "p002", "p003", "p007"]) {
+for (const code of ["p001", "p002", "p003", "p004"]) {
   test(`${code} case study and print routes respond`, async ({
     page,
     request,

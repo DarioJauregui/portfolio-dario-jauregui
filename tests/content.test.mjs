@@ -12,7 +12,6 @@ const entries = [...load("src/content/projects"), ...load("src/content/lab")];
 
 test("project hierarchy matches the approved brief", () => {
   assert.deepEqual(entries.map(({ code }) => code).sort(), [
-    "L001",
     "P001",
     "P002",
     "P003",
@@ -22,27 +21,28 @@ test("project hierarchy matches the approved brief", () => {
     "P007",
     "P008",
     "P009",
+    "P010",
   ]);
   assert.deepEqual(
     entries
       .filter(({ level }) => level === "featured")
       .map(({ code }) => code)
       .sort(),
-    ["P001", "P002", "P003", "P007"],
+    ["P001", "P002", "P003", "P004"],
   );
   assert.deepEqual(
     entries
       .filter(({ level }) => level === "project")
       .map(({ code }) => code)
       .sort(),
-    ["P004", "P005", "P006", "P009"],
+    ["P005", "P006", "P007", "P008"],
   );
   assert.deepEqual(
     entries
       .filter(({ level }) => level === "lab")
       .map(({ code }) => code)
       .sort(),
-    ["L001", "P008"],
+    ["P009", "P010"],
   );
   assert.deepEqual(
     entries.toSorted((a, b) => a.order - b.order).map(({ code }) => code),
@@ -50,13 +50,13 @@ test("project hierarchy matches the approved brief", () => {
       "P001",
       "P002",
       "P003",
-      "P007",
-      "P006",
       "P004",
       "P005",
-      "P009",
+      "P006",
+      "P007",
       "P008",
-      "L001",
+      "P009",
+      "P010",
     ],
   );
 });
@@ -107,10 +107,10 @@ test("approved metrics and collaboration wording are preserved", () => {
   );
   assert.match(byCode.P001.copy.es.impact, /siete/);
   assert.match(byCode.P003.copy.es.impact, /9,3 %/);
-  assert.match(byCode.P007.copy.es.impact, /diez jornadas/);
-  assert.match(byCode.P006.copy.es.contribution, /empresa externa/);
+  assert.match(byCode.P004.copy.es.impact, /diez jornadas/);
+  assert.match(byCode.P005.copy.es.contribution, /empresa externa/);
   assert.match(
-    byCode.P009.copy.es.confidentiality,
+    byCode.P008.copy.es.confidentiality,
     /no se afirma certificación/,
   );
 });

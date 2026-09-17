@@ -200,8 +200,46 @@ a {
   margin-top: 1.7rem;
 }
 
-.arrow-link::after {
-  content: "↓";
+.arrow-link::after,
+.text-link::after,
+.contact-links a::after,
+.footer a::after,
+.back-link::before {
+  content: "";
+}
+
+.arrow-link::after,
+.text-link::after,
+.contact-links a::after,
+.footer a::after,
+.back-link::before,
+.project-index-arrow,
+.visual-step i,
+.next-project i {
+  width: 0.42rem;
+  height: 0.42rem;
+  display: inline-block;
+  flex: 0 0 auto;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  rotate: -45deg;
+}
+
+.arrow-link::after,
+.project-index-arrow {
+  rotate: 45deg;
+}
+
+.footer a::after {
+  rotate: -135deg;
+}
+
+.back-link::before {
+  rotate: 135deg;
+}
+
+.arrow-link--right::after {
+  rotate: -45deg;
 }
 
 .section {
@@ -289,11 +327,6 @@ a {
   white-space: nowrap;
 }
 
-.project-index-arrow {
-  font-size: 0.8rem;
-  line-height: 1.3;
-}
-
 .project-index-list a:hover .project-index-title strong,
 .project-index-list a:focus-visible .project-index-title strong {
   color: var(--color-accent);
@@ -347,7 +380,7 @@ a {
 }
 
 .project-visual--p002,
-.project-visual--p007 {
+.project-visual--p004 {
   background: #eeece6;
 }
 
@@ -386,7 +419,6 @@ a {
   right: -0.65rem;
   color: var(--color-accent);
   background: inherit;
-  font-style: normal;
 }
 
 .project-visual figcaption {
@@ -597,12 +629,17 @@ a {
 }
 
 .architecture li:not(:last-child)::after {
-  content: "→";
+  content: "";
   position: absolute;
   top: 50%;
   right: -0.4rem;
   z-index: 1;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
   translate: 0 -50%;
+  rotate: -45deg;
   color: var(--color-accent);
   background: var(--color-paper);
 }
@@ -659,6 +696,7 @@ a {
 .contact-links a {
   min-height: 2.75rem;
   display: inline-flex;
+  gap: 0.55rem;
   align-items: center;
   color: var(--color-muted);
   font-weight: 650;
@@ -684,6 +722,9 @@ a {
 }
 
 .footer a {
+  display: inline-flex;
+  gap: 0.55rem;
+  align-items: center;
   color: var(--color-accent);
   text-underline-offset: 0.25rem;
 }
@@ -695,6 +736,7 @@ a {
 .back-link {
   display: inline-flex;
   min-height: 2.75rem;
+  gap: 0.55rem;
   align-items: center;
   margin-bottom: clamp(2.5rem, 5vw, 4rem);
   color: var(--color-accent);
@@ -835,8 +877,6 @@ a {
 
 .next-project i {
   color: var(--color-accent);
-  font-size: 2rem;
-  font-style: normal;
 }
 
 .not-found {
@@ -1005,7 +1045,7 @@ a {
   .visual-step i {
     right: 50%;
     bottom: -0.8rem;
-    rotate: 90deg;
+    rotate: 45deg;
   }
 
   .project-row {
@@ -1048,7 +1088,7 @@ a {
     right: 0;
     bottom: -0.65rem;
     translate: 0;
-    rotate: 90deg;
+    rotate: 45deg;
   }
 
   .contact-section {

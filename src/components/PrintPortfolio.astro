@@ -31,7 +31,7 @@ const evidence = {
     lang === "es"
       ? "WAPE 9,3 % · mejora ≈ 45,8 % · valoración 4,5/5"
       : "9.3% WAPE · ≈ 45.8% improvement · 4.5/5 rating",
-  P007:
+  P004:
     lang === "es"
       ? "> 10 jornadas de trabajo ahorradas al mes"
       : "> 10 working days saved each month",
@@ -176,7 +176,7 @@ const evidence = {
           <span>{data.code}</span>
           <h3>{data.copy[lang].title}</h3>
           <p>{data.copy[lang].strapline}</p>
-          <small>{data.architecture[lang].join(" → ")}</small>
+          <small>{data.architecture[lang].join(" · ")}</small>
         </article>
       ))}
     </div>
