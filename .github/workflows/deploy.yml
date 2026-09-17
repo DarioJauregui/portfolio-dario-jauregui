@@ -17,8 +17,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
-      SITE_URL: ${{ vars.SITE_URL }}
-      BASE_PATH: ${{ vars.BASE_PATH }}
+      SITE_URL: ${{ vars.SITE_URL || 'https://dariojauregui.github.io/portfolio-dario-jauregui' }}
+      BASE_PATH: ${{ vars.BASE_PATH || '/portfolio-dario-jauregui' }}
     permissions:
       contents: read
     steps:
