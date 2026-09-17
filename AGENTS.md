@@ -30,7 +30,7 @@
 - Las rutas de impresión son `/es/print/`, `/en/print/`, `/es/cv/` y `/en/cv/`.
 - `npm run build:full` debe regenerar PDF y dejar `dist/` listo.
 - GitHub Pages se despliega desde `main` mediante Actions. No añadir otro proveedor ni tokens personales.
-- La URL y el `base` se controlan con `SITE_URL` y `BASE_PATH`; un futuro dominio añade además `public/CNAME`.
+- La URL y el `base` se controlan con `SITE_URL` y `BASE_PATH`; al publicar mediante Actions no se añade `public/CNAME`.
 
 ## Antes de terminar
 

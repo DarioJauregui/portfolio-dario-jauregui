@@ -66,10 +66,11 @@ Cuando exista un dominio:
 1. Configura el dominio en **Settings → Pages → Custom domain**.
 2. Para un subdominio `www`, crea un CNAME hacia `dariojauregui.github.io`.
 3. Para un dominio raíz, crea los registros A/AAAA que GitHub indique en ese momento y verifícalos en su documentación oficial.
-4. Añade el archivo `public/CNAME` con el dominio elegido.
-5. En **Settings → Secrets and variables → Actions → Variables**, crea `SITE_URL=https://tu-dominio` y `BASE_PATH=/`.
-6. Ejecuta `npm run ci`, confirma `public/CNAME` en Git y haz push a `main`.
-7. Espera al workflow **Deploy to GitHub Pages** y activa **Enforce HTTPS**.
+4. En **Settings → Secrets and variables → Actions → Variables**, crea `SITE_URL=https://tu-dominio` y `BASE_PATH=/`.
+5. Vuelve a ejecutar el workflow **Deploy to GitHub Pages**.
+6. Cuando GitHub complete el certificado, activa **Enforce HTTPS** en **Settings → Pages**.
+
+Este repositorio publica con un workflow de GitHub Actions: GitHub ignora y no requiere un archivo `CNAME` dentro del artefacto desplegado.
 
 No se configura DNS antes de elegir y comprar el dominio.
 
