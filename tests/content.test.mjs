@@ -44,6 +44,21 @@ test("project hierarchy matches the approved brief", () => {
       .sort(),
     ["L001", "P008"],
   );
+  assert.deepEqual(
+    entries.toSorted((a, b) => a.order - b.order).map(({ code }) => code),
+    [
+      "P001",
+      "P002",
+      "P003",
+      "P007",
+      "P006",
+      "P004",
+      "P005",
+      "P009",
+      "P008",
+      "L001",
+    ],
+  );
 });
 
 test("Spanish and English contain equivalent project fields", () => {
@@ -97,5 +112,23 @@ test("approved metrics and collaboration wording are preserved", () => {
   assert.match(
     byCode.P009.copy.es.confidentiality,
     /no se afirma certificación/,
+  );
+});
+
+test("public captures use complete dimensions and product-centred captions", () => {
+  const byCode = Object.fromEntries(
+    entries.map((entry) => [entry.code, entry]),
+  );
+  assert.deepEqual(
+    [byCode.P001.media.width, byCode.P001.media.height],
+    [2485, 1333],
+  );
+  assert.deepEqual(
+    [byCode.P002.media.width, byCode.P002.media.height],
+    [1920, 1021],
+  );
+  assert.doesNotMatch(
+    `${byCode.P001.media.caption.es} ${byCode.P002.media.caption.es}`,
+    /sanead|pixel|recort|confiden/i,
   );
 });

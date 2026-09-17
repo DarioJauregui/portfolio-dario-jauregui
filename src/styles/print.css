@@ -153,14 +153,6 @@ a {
   line-height: 1.42;
 }
 
-.print-selected-index {
-  max-width: 145mm;
-  margin-left: 22mm;
-  padding-top: 7mm;
-  border-top: 0.25mm solid #c8c5be;
-}
-
-.print-selected-index h3,
 .print-story h3,
 .print-technical b {
   margin: 0 0 2mm;
@@ -180,11 +172,27 @@ a {
   list-style: none;
 }
 
+.print-index-intro {
+  margin: 8mm 0 4mm;
+  color: #55514b;
+  font:
+    500 7pt/1.4 "IBM Plex Mono",
+    monospace;
+}
+
+.print-index--all {
+  grid-template-rows: repeat(5, auto);
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(0, 1fr);
+  gap: 0 10mm;
+}
+
 .print-index li {
   display: grid;
   grid-template-columns: 13mm 1fr;
   gap: 2mm;
-  padding-block: 2mm;
+  min-height: 27mm;
+  padding-block: 4mm;
   border-bottom: 0.2mm solid #d1cec7;
   font-size: 8.5pt;
   line-height: 1.35;
@@ -200,6 +208,11 @@ a {
 .print-index strong,
 .print-index small {
   display: block;
+}
+
+.print-index strong {
+  font-size: 9pt;
+  line-height: 1.35;
 }
 
 .print-index small {
@@ -286,6 +299,7 @@ a {
 
 .print-project-media {
   margin: 4mm 0;
+  break-inside: avoid;
 }
 
 .print-project-media img {
@@ -447,6 +461,22 @@ a {
 .print-contact {
   display: grid;
   align-content: space-between;
+}
+
+.print-about--standalone {
+  max-width: 150mm;
+  margin: 25mm 0 0 18mm;
+}
+
+.print-about--standalone p {
+  margin-bottom: 7mm;
+  font-size: 10.5pt;
+  line-height: 1.65;
+}
+
+.print-about--standalone .print-lead {
+  font-size: 17pt;
+  line-height: 1.45;
 }
 
 .print-contact > div > span {

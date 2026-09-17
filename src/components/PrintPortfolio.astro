@@ -19,6 +19,9 @@ const featuredGroups = [
   featured.slice(1, 2),
   featured.slice(2, 4),
 ];
+const projectIndex = [...featured, ...timeline, ...lab].sort(
+  (a, b) => a.data.order - b.data.order,
+);
 const evidence = {
   P001:
     lang === "es"
@@ -54,30 +57,26 @@ const evidence = {
     </div>
   </section>
 
-  <section class="print-page print-overview">
+  <section class="print-page print-project-index">
     <header>
-      <span>{lang === "es" ? "PERFIL" : "PROFILE"}</span>
-      <h2>{t.profile}</h2>
+      <span>{lang === "es" ? "ÍNDICE" : "INDEX"}</span>
+      <h2>{t.projects}</h2>
     </header>
-    <div class="print-about">
-      {p.map((paragraph, index) => (
-        <p class:list={{ "print-lead": index === 0 }}>{paragraph}</p>
+    <p class="print-index-intro">{t.projectCount}</p>
+    <ol class="print-index print-index--all">
+      {projectIndex.map(({ data }) => (
+        <li>
+          <b>{data.code}</b>
+          <span>
+            <strong>{data.copy[lang].title}</strong>
+            <small>
+              {data.period[lang]}
+              {data.level === "featured" && ` · ${t.fullCase}`}
+            </small>
+          </span>
+        </li>
       ))}
-    </div>
-    <div class="print-selected-index">
-      <h3>{t.selected}</h3>
-      <ol class="print-index">
-        {featured.map(({ data }) => (
-          <li>
-            <b>{data.code}</b>
-            <span>
-              <strong>{data.copy[lang].title}</strong>
-              <small>{data.copy[lang].subtitle}</small>
-            </span>
-          </li>
-        ))}
-      </ol>
-    </div>
+    </ol>
   </section>
 
   {featuredGroups.map((group) => (
@@ -179,6 +178,18 @@ const evidence = {
           <p>{data.copy[lang].strapline}</p>
           <small>{data.architecture[lang].join(" → ")}</small>
         </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="print-page print-about-page">
+    <header>
+      <span>{lang === "es" ? "PERFIL" : "PROFILE"}</span>
+      <h2>{t.profile}</h2>
+    </header>
+    <div class="print-about print-about--standalone">
+      {p.map((paragraph, index) => (
+        <p class:list={{ "print-lead": index === 0 }}>{paragraph}</p>
       ))}
     </div>
   </section>

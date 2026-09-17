@@ -22,8 +22,11 @@ const featured = allProjects
   .sort((a, b) => a.data.order - b.data.order);
 const timeline = allProjects
   .filter(({ data }) => data.level === "project")
-  .sort((a, b) => b.data.period[lang].localeCompare(a.data.period[lang]));
+  .sort((a, b) => a.data.order - b.data.order);
 const lab = labEntries.sort((a, b) => a.data.order - b.data.order);
+const projectIndex = [...allProjects, ...labEntries].sort(
+  (a, b) => a.data.order - b.data.order,
+);
 const p = profile[lang];
 const portfolioUrl = withBase(
   `/downloads/dario-jauregui-portfolio-${lang}.pdf`,
@@ -44,15 +47,47 @@ const portfolioUrl = withBase(
         </div>
         <div>
           <p class="statement">{t.statement}</p>
-          <a class="arrow-link" href="#work">
+          <a class="arrow-link" href="#projects">
             {t.viewWork}
           </a>
         </div>
       </div>
     </section>
 
+    <section
+      class="project-index-section shell"
+      id="projects"
+      aria-labelledby="project-index-title"
+    >
+      <header class="project-index-head">
+        <h2 id="project-index-title">{t.projects}</h2>
+        <p>{t.projectCount}</p>
+      </header>
+      <ol class="project-index-list">
+        {projectIndex.map(({ data }) => (
+          <li>
+            <a
+              href={`#${data.code.toLowerCase()}`}
+              aria-label={`${data.copy[lang].title}, ${data.period[lang]}`}
+            >
+              <span class="project-index-code">{data.code}</span>
+              <span class="project-index-title">
+                <strong>{data.copy[lang].title}</strong>
+                {data.level === "featured" && <small>{t.fullCase}</small>}
+              </span>
+              <span class="project-index-period">{data.period[lang]}</span>
+              <span class="project-index-arrow" aria-hidden="true">
+                ↓
+              </span>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
     <section class="section shell" id="work" aria-labelledby="work-title">
       <SectionHeader
+        id="work-title"
         title={t.selected}
         intro={
           lang === "es"
@@ -67,21 +102,13 @@ const portfolioUrl = withBase(
       </div>
     </section>
 
-    <section class="section shell" id="profile" aria-labelledby="profile-title">
-      <SectionHeader title={t.profile} />
-      <div class="profile-editorial">
-        {p.map((paragraph) => (
-          <p>{paragraph}</p>
-        ))}
-      </div>
-    </section>
-
     <section
       class="section shell"
       id="timeline"
       aria-labelledby="timeline-title"
     >
       <SectionHeader
+        id="timeline-title"
         title={t.timeline}
         intro={
           lang === "es"
@@ -93,7 +120,7 @@ const portfolioUrl = withBase(
         {timeline.map(({ data }) => {
           const copy = data.copy[lang];
           return (
-            <article class="project-row">
+            <article class="project-row" id={data.code.toLowerCase()}>
               <div class="project-row-meta">
                 <span>{data.period[lang]}</span>
                 <span>{data.code}</span>
@@ -110,6 +137,7 @@ const portfolioUrl = withBase(
 
     <section class="section shell" id="lab" aria-labelledby="lab-title">
       <SectionHeader
+        id="lab-title"
         title={t.lab}
         intro={
           lang === "es"
@@ -121,7 +149,7 @@ const portfolioUrl = withBase(
         {lab.map(({ data }) => {
           const copy = data.copy[lang];
           return (
-            <article class="lab-card">
+            <article class="lab-card" id={data.code.toLowerCase()}>
               <div class="lab-meta">
                 <span>{data.code}</span>
                 <span>{data.status[lang]}</span>
@@ -136,6 +164,15 @@ const portfolioUrl = withBase(
             </article>
           );
         })}
+      </div>
+    </section>
+
+    <section class="section shell" id="profile" aria-labelledby="profile-title">
+      <SectionHeader id="profile-title" title={t.profile} />
+      <div class="profile-editorial">
+        {p.map((paragraph) => (
+          <p>{paragraph}</p>
+        ))}
       </div>
     </section>
 

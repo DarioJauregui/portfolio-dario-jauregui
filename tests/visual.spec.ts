@@ -15,6 +15,8 @@ for (const viewport of viewports) {
     await page.goto("es/", { waitUntil: "networkidle" });
     await expect(page.locator("main")).toBeVisible();
     await expect(page.locator(".project-media img")).toHaveCount(2);
+    for (const image of await page.locator(".project-media img").all())
+      await image.scrollIntoViewIfNeeded();
     expect(
       await page
         .locator(".project-media img")
@@ -23,7 +25,12 @@ for (const viewport of viewports) {
             (image) =>
               image instanceof HTMLImageElement &&
               image.complete &&
-              image.naturalWidth > 0,
+              image.naturalWidth > 0 &&
+              getComputedStyle(image).objectFit === "contain" &&
+              Math.abs(
+                image.clientWidth / image.clientHeight -
+                  image.naturalWidth / image.naturalHeight,
+              ) < 0.02,
           ),
         ),
     ).toBeTruthy();
@@ -32,10 +39,13 @@ for (const viewport of viewports) {
         () => document.documentElement.scrollWidth <= window.innerWidth,
       ),
     ).toBeTruthy();
-    if (viewport.name === "desktop")
+    if (viewport.name === "desktop") {
       expect(
-        await page.evaluate(() => document.documentElement.scrollHeight),
-      ).toBeLessThan(7000);
+        await page
+          .locator("#projects")
+          .evaluate((section) => section.clientHeight),
+      ).toBeLessThanOrEqual(viewport.height);
+    }
     await page.screenshot({
       path: `output/playwright/home-${viewport.name}.png`,
       fullPage: true,

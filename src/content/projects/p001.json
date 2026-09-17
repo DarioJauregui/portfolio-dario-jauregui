@@ -9,15 +9,15 @@
   },
   "media": {
     "src": "/media/p001-terraldata-platform.webp",
-    "width": 1320,
-    "height": 660,
+    "width": 2485,
+    "height": 1333,
     "alt": {
-      "es": "Vista recortada de TerralData con navegación lateral y panel principal",
-      "en": "Cropped TerralData view with side navigation and the main dashboard"
+      "es": "Vista general completa de TerralData con navegación por áreas y panel de datos",
+      "en": "Full TerralData overview with area-based navigation and data dashboard"
     },
     "caption": {
-      "es": "Vista saneada de la plataforma; las cifras operativas se han pixelado.",
-      "en": "Sanitised platform view; operational figures have been pixelated."
+      "es": "Vista general de TerralData, con navegación por áreas y acceso centralizado a productos de datos.",
+      "en": "Overview of TerralData, with area-based navigation and centralised access to data products."
     }
   },
   "architecture": {
@@ -47,7 +47,7 @@
       "contribution": "He desarrollado frontend, backend, integraciones, automatizaciones y modelo de acceso, además de la mayor parte de los paneles.",
       "impact": "Da servicio a unas siete áreas de negocio y reúne alrededor de veinte paneles con actualizaciones automáticas y acceso por roles.",
       "technical": "La plataforma está construida con Angular en el frontend y servicios Python y Flask en el backend, e integra Power BI y Microsoft Identity para la visualización y el control de acceso.",
-      "confidentiality": "La presentación pública utiliza arquitectura de alto nivel y una captura recortada con las cifras operativas pixeladas."
+      "confidentiality": "La captura pública conserva la interfaz completa y oculta únicamente la identidad de la sesión, identificadores y cifras operativas puntuales."
     },
     "en": {
       "title": "TerralData",
@@ -59,7 +59,7 @@
       "contribution": "I developed the frontend, backend, integrations, automation and access model, as well as most of the dashboards.",
       "impact": "It supports roughly seven business areas and brings together around twenty dashboards with automated updates and role-based access.",
       "technical": "The platform uses Angular on the frontend and Python and Flask services on the backend, with Power BI and Microsoft Identity supporting visualisation and access control.",
-      "confidentiality": "The public presentation uses high-level architecture and a cropped capture with operational figures pixelated."
+      "confidentiality": "The public capture preserves the full interface and hides only the signed-in identity, identifiers and point-in-time operational figures."
     }
   }
 }

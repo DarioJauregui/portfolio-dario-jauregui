@@ -9,15 +9,15 @@
   },
   "media": {
     "src": "/media/p002-live-operations-display.webp",
-    "width": 1240,
-    "height": 720,
+    "width": 1920,
+    "height": 1021,
     "alt": {
-      "es": "Vista del display operativo con indicadores en vivo y gráficos energéticos",
-      "en": "Operations display showing live indicators and energy charts"
+      "es": "Vista completa del display operativo con indicadores, gráficos energéticos y mapa",
+      "en": "Full operations display with indicators, energy charts and map"
     },
     "caption": {
-      "es": "Captura saneada del display; se han recortado el mapa y la cabecera y pixelado los datos puntuales.",
-      "en": "Sanitised display capture; the map and header were cropped and point-in-time data pixelated."
+      "es": "Display operativo con indicadores en tiempo real, comparativas recientes y balance energético.",
+      "en": "Operational display with real-time indicators, recent comparisons and energy balance."
     }
   },
   "architecture": {
@@ -47,7 +47,7 @@
       "contribution": "Me encargué del flujo de extremo a extremo: adquisición, tratamiento, API, lógica editorial, frontend y preparación para funcionamiento continuo.",
       "impact": "Reúne monitorización en vivo, interpretación contextual y comunicación corporativa para explicar qué ocurre y cómo se compara con referencias recientes.",
       "technical": "La solución conecta pipelines ETL y una API desarrolladas en Python con un frontend en React y TypeScript preparado para actualizar y contextualizar los datos de forma continua.",
-      "confidentiality": "La captura pública recorta la cabecera, el mapa y los identificadores y pixela los datos puntuales."
+      "confidentiality": "La captura pública conserva la cabecera, los gráficos y el mapa; oculta únicamente cifras puntuales e identificadores operativos."
     },
     "en": {
       "title": "Live Operations Display",
@@ -59,7 +59,7 @@
       "contribution": "I owned the end-to-end flow: acquisition, processing, API, editorial logic, frontend and preparation for continuous operation.",
       "impact": "It brings live monitoring, contextual interpretation and internal communication together to explain what is happening and how it compares with recent references.",
       "technical": "The solution connects Python ETL pipelines and an API to a React and TypeScript frontend designed to update and contextualise the data continuously.",
-      "confidentiality": "The public capture crops the header, map and identifiers and pixelates point-in-time data."
+      "confidentiality": "The public capture preserves the header, charts and map while hiding only point-in-time figures and operational identifiers."
     }
   }
 }

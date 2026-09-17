@@ -14,7 +14,7 @@ const copy = data.copy[lang];
 const t = ui[lang];
 ---
 
-<article class="featured-card">
+<article class="featured-card" id={data.code.toLowerCase()}>
   <ProjectVisual code={data.code} lang={lang} media={data.media} />
   <div class="featured-copy">
     <div class="featured-meta">

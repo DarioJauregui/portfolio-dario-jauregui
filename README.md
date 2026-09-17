@@ -1,6 +1,6 @@
 # Portfolio de Darío Jáuregui
 
-Portfolio profesional bilingüe de Darío Jáuregui, AI, Data & Automation Engineer. Presenta cuatro casos de estudio, otros sistemas profesionales, un laboratorio de prototipos y portfolios PDF reproducibles.
+Portfolio profesional bilingüe de Darío Jáuregui, AI, Data & Automation Engineer. Un índice editorial permite recorrer diez proyectos en la portada y profundizar en cuatro casos de estudio; los portfolios PDF se generan desde la misma fuente.
 
 ## Stack
 
@@ -26,7 +26,7 @@ npm run check       # TypeScript, Astro y contenido
 npm run lint        # Formato reproducible y comprobaciones
 npm run test        # Paridad, jerarquía y reglas editoriales
 npm run build       # Web estática
-npm run build:full  # Web + cuatro PDF + artefacto final
+npm run build:full  # Web + dos PDF + artefacto final
 npm run ci          # Validación completa, enlaces y navegación
 ```
 
@@ -50,6 +50,16 @@ Las rutas `/es/print/` y `/en/print/` usan las mismas fuentes estructuradas que 
 - `dario-jauregui-portfolio-en.pdf`
 
 Los archivos se crean en `public/downloads/` y se incorporan a `dist/` en el segundo build de `npm run build:full`.
+
+## Capturas públicas
+
+Los originales permanecen ignorados en `Assets/raw/`. Los derivados WebP completos de P001 y P002 se regeneran localmente con:
+
+```bash
+python scripts/sanitize-media.py
+```
+
+El script aplica pixelado irreversible solo a identidades, identificadores y cifras operativas concretas. No forma parte del build porque las fuentes originales nunca se copian al repositorio ni al artefacto público.
 
 ## CI/CD y GitHub Pages
 

@@ -17,15 +17,16 @@
 - Los hechos viven en `src/content/`, el perfil en `src/data/` y la interfaz en `src/i18n/`.
 - Toda entrada debe superar el esquema de `src/content.config.ts` y contener ES/EN equivalentes.
 - Featured: P001, P002, P003 y P007. Timeline: P004, P005, P006 y P009. Lab: P008 y L001.
+- El índice general ordena los diez proyectos como P001, P002, P003, P007, P006, P004, P005, P009, P008 y L001; cada fila enlaza a una única ancla estable en la portada.
 - Para añadir un proyecto, crea una entrada JSON, completa ambos idiomas, asígnale orden y ejecuta las comprobaciones. No cambies componentes para introducir datos editoriales.
 - Los case studies son artículos continuos y compactos: contexto, solución, funcionamiento, contribución, resultado e implementación técnica explicada en prosa. No recuperar las antiguas pantallas numeradas ni listas de palabras clave.
-- La home mantiene este orden: hero, proyectos destacados, sobre mí, otros proyectos, Lab, contacto.
+- La home mantiene este orden: hero, índice general, proyectos destacados, proyectos profesionales, Lab, sobre mí, contacto.
 
 ## Confidencialidad
 
 - `Assets/` y especialmente `Assets/raw/` son fuente local de solo lectura y nunca se versionan.
 - No publicar datos reales, credenciales, URLs o rutas internas, endpoints, nombres de equipos, identificadores operativos, artefactos de modelos ni infraestructura sensible.
-- Las capturas autorizadas se publican únicamente como derivados saneados en `public/media/`; nunca copiar originales de `Assets` al despliegue.
+- Las capturas autorizadas se publican únicamente como derivados completos y saneados en `public/media/`; nunca copiar originales de `Assets` al despliegue. Los rectángulos de ocultación se documentan en `scripts/sanitize-media.py`.
 - Las restricciones editoriales y de confidencialidad permanecen en los datos y en `PUBLISHING_REVIEW.md`; nunca se muestran al visitante.
 - No usar métricas inventadas o decorativas. Las cifras aprobadas aparecen con tamaño moderado y contexto, una sola vez por pieza.
 - P003 es un MVP interno y proyecto aplicado. P006 debe acreditar el desarrollo externo de formularios. P008 y P009 no tienen afirmaciones de homologación, certificación o despliegue de seguridad.
