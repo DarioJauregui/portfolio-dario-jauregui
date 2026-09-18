@@ -108,6 +108,7 @@ test("approved metrics and collaboration wording are preserved", () => {
   assert.match(byCode.P001.copy.es.impact, /siete/);
   assert.match(byCode.P003.copy.es.impact, /9,3 %/);
   assert.match(byCode.P004.copy.es.impact, /diez jornadas/);
+  assert.match(byCode.P004.copy.es.contribution, /departamento Financiero/);
   assert.match(byCode.P005.copy.es.contribution, /empresa externa/);
   assert.match(
     byCode.P008.copy.es.confidentiality,
@@ -115,7 +116,7 @@ test("approved metrics and collaboration wording are preserved", () => {
   );
 });
 
-test("public captures use complete dimensions and product-centred captions", () => {
+test("public captures and references use approved product evidence", () => {
   const byCode = Object.fromEntries(
     entries.map((entry) => [entry.code, entry]),
   );
@@ -127,8 +128,23 @@ test("public captures use complete dimensions and product-centred captions", () 
     [byCode.P002.media.width, byCode.P002.media.height],
     [1920, 1021],
   );
+  assert.deepEqual(
+    [byCode.P003.media.width, byCode.P003.media.height],
+    [2479, 1336],
+  );
+  assert.deepEqual(
+    byCode.P001.gallery.map(({ width, height }) => [width, height]),
+    [
+      [360, 829],
+      [329, 256],
+    ],
+  );
+  assert.equal(
+    byCode.P003.repository,
+    "https://github.com/DarioJauregui/project-MetroScenarioStudio",
+  );
   assert.doesNotMatch(
-    `${byCode.P001.media.caption.es} ${byCode.P002.media.caption.es}`,
+    `${byCode.P001.media.caption.es} ${byCode.P002.media.caption.es} ${byCode.P003.media.caption.es}`,
     /sanead|pixel|recort|confiden/i,
   );
 });

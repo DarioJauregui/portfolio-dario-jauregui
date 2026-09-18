@@ -126,6 +126,33 @@ const portfolioUrl = withBase(
               <div>
                 <h3>{copy.title}</h3>
                 <p>{copy.strapline}</p>
+                <details class="project-row-details">
+                  <summary>
+                    {lang === "es"
+                      ? "Más sobre el proyecto"
+                      : "More about the project"}
+                  </summary>
+                  <div class="project-row-expanded">
+                    <div>
+                      <h4>{lang === "es" ? "Necesidad" : "Need"}</h4>
+                      <p>
+                        {copy.context} {copy.problem}
+                      </p>
+                    </div>
+                    <div>
+                      <h4>
+                        {lang === "es" ? "Trabajo realizado" : "Work delivered"}
+                      </h4>
+                      <p>
+                        {copy.system} {copy.contribution}
+                      </p>
+                    </div>
+                    <div>
+                      <h4>{lang === "es" ? "Resultado" : "Outcome"}</h4>
+                      <p>{copy.impact}</p>
+                    </div>
+                  </div>
+                </details>
               </div>
             </article>
           );

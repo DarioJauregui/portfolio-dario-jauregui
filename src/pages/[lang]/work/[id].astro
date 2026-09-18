@@ -61,6 +61,17 @@ const seoTitle = [copy.title, copy.subtitle].filter(Boolean).join(" - ");
           <h1>{copy.title}</h1>
           <p class="case-subtitle">{copy.subtitle}</p>
           <p class="case-deck">{copy.strapline}</p>
+          {data.repository && (
+            <a
+              class="case-repository-link"
+              href={data.repository}
+              rel="external"
+            >
+              {lang === "es"
+                ? "Código y documentación en GitHub"
+                : "Code and documentation on GitHub"}
+            </a>
+          )}
         </div>
         <ProjectVisual
           code={data.code}
@@ -90,6 +101,29 @@ const seoTitle = [copy.title, copy.subtitle].filter(Boolean).join(" - ");
           <p>{copy.system}</p>
         </div>
       </section>
+
+      {data.gallery && (
+        <section class="case-article-section" aria-labelledby="gallery-title">
+          <h2 id="gallery-title">
+            {lang === "es" ? "Vistas de producto" : "Product views"}
+          </h2>
+          <div class="case-gallery">
+            {data.gallery.map((item) => (
+              <figure>
+                <img
+                  src={withBase(item.src)}
+                  width={item.width}
+                  height={item.height}
+                  alt={item.alt[lang]}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <figcaption>{item.caption[lang]}</figcaption>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
 
       <section
         class="case-article-section"

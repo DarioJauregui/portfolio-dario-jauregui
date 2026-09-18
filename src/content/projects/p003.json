@@ -7,6 +7,20 @@
     "es": "MVP interno y TFM aplicado",
     "en": "Internal MVP and applied master's project"
   },
+  "media": {
+    "src": "/media/p003-metro-scenario-studio.webp",
+    "width": 2479,
+    "height": 1336,
+    "alt": {
+      "es": "Interfaz completa de Metro Scenario Studio con configuración, comparación y resultados de un escenario de demanda",
+      "en": "Full Metro Scenario Studio interface with demand scenario configuration, comparison and results"
+    },
+    "caption": {
+      "es": "La interfaz reúne configuración what-if, comparación de escenarios, resultados, explicación y trazabilidad.",
+      "en": "The interface brings together what-if configuration, scenario comparison, results, explanation and traceability."
+    }
+  },
+  "repository": "https://github.com/DarioJauregui/project-MetroScenarioStudio",
   "architecture": {
     "es": [
       "Datos y contexto",

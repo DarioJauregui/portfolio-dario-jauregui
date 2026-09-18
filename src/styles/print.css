@@ -154,7 +154,8 @@ a {
 }
 
 .print-story h3,
-.print-technical b {
+.print-technical b,
+.print-repository b {
   margin: 0 0 2mm;
   color: #6d130e;
   font:
@@ -359,6 +360,18 @@ a {
   line-height: 1.45;
 }
 
+.print-repository {
+  margin: 1.5mm 0 0;
+  color: #55514b;
+  font-size: 6.6pt;
+  line-height: 1.45;
+}
+
+.print-repository a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .print-projects-page:has(.print-project:only-child) .print-project > h2 {
   margin-top: 5mm;
   font-size: 26pt;
@@ -373,7 +386,8 @@ a {
 }
 
 .print-projects-page:has(.print-project:only-child) .print-story p,
-.print-projects-page:has(.print-project:only-child) .print-technical {
+.print-projects-page:has(.print-project:only-child) .print-technical,
+.print-projects-page:has(.print-project:only-child) .print-repository {
   font-size: 7.2pt;
 }
 
@@ -414,6 +428,12 @@ a {
   margin: 0;
   font-size: 7.2pt;
   line-height: 1.4;
+}
+
+.print-timeline .print-timeline-detail {
+  margin-top: 1mm;
+  color: #69655e;
+  font-size: 6.4pt;
 }
 
 .print-lab-title {

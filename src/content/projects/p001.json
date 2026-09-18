@@ -20,6 +20,34 @@
       "en": "Overview of TerralData, with area-based navigation and centralised access to data products."
     }
   },
+  "gallery": [
+    {
+      "src": "/media/p001-terraldata-navigation.webp",
+      "width": 360,
+      "height": 829,
+      "alt": {
+        "es": "Navegación lateral de TerralData organizada por áreas y productos de datos",
+        "en": "TerralData side navigation organised by business areas and data products"
+      },
+      "caption": {
+        "es": "Navegación por áreas que reúne productos de datos, paneles y automatizaciones en un único acceso.",
+        "en": "Area-based navigation bringing data products, dashboards and automation into a single access point."
+      }
+    },
+    {
+      "src": "/media/p001-terraldata-roles.webp",
+      "width": 329,
+      "height": 256,
+      "alt": {
+        "es": "Selector de rol de visualización y opciones de cuenta de TerralData",
+        "en": "TerralData viewing-role selector and account options"
+      },
+      "caption": {
+        "es": "El selector de roles adapta el acceso y la experiencia a los permisos de cada perfil.",
+        "en": "The role selector adapts access and the experience to each profile's permissions."
+      }
+    }
+  ],
   "architecture": {
     "es": [
       "Fuentes operativas",

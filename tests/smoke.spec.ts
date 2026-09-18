@@ -11,6 +11,13 @@ test("home, language and selected work are navigable", async ({ page }) => {
   await expect(page.locator(".project-index-list a")).toHaveCount(10);
   await expect(page.locator("body")).not.toContainText(/[←→↑↓↗↘↖↙]/);
   await expect(page.locator(".featured-card")).toHaveCount(4);
+  await expect(page.locator(".project-row-details")).toHaveCount(4);
+  const firstProfessionalProject = page.locator(".project-row-details").first();
+  await firstProfessionalProject.locator("summary").click();
+  await expect(firstProfessionalProject).toHaveAttribute("open", "");
+  await expect(
+    firstProfessionalProject.getByText("Trabajo realizado", { exact: true }),
+  ).toBeVisible();
   await expect(page.locator(".project-areas, .specialties")).toHaveCount(0);
   await expect(page.locator("body")).not.toContainText(/CV|Currículum/);
   expect(
@@ -64,6 +71,17 @@ for (const code of ["p001", "p002", "p003", "p004"]) {
       "Límites de publicación",
     );
     await expect(page.locator("body")).not.toContainText("Internal safe");
+    if (code === "p001")
+      await expect(page.locator(".case-gallery img")).toHaveCount(2);
+    if (code === "p003")
+      await expect(
+        page.getByRole("link", {
+          name: "Código y documentación en GitHub",
+        }),
+      ).toHaveAttribute(
+        "href",
+        "https://github.com/DarioJauregui/project-MetroScenarioStudio",
+      );
     expect((await request.get(`es/print/`)).ok()).toBeTruthy();
     expect((await request.get(`en/print/`)).ok()).toBeTruthy();
   });

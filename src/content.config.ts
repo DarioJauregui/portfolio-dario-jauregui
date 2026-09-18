@@ -15,6 +15,14 @@ const localeCopy = z.object({
   confidentiality: z.string().min(12),
 });
 
+const mediaItem = z.object({
+  src: z.string().startsWith("/"),
+  width: z.number().int().positive(),
+  height: z.number().int().positive(),
+  alt: z.object({ es: z.string().min(12), en: z.string().min(12) }),
+  caption: z.object({ es: z.string().min(12), en: z.string().min(12) }),
+});
+
 const projectSchema = z.object({
   code: z.string().regex(/^P\d{3}$/),
   order: z.number().int().positive(),
@@ -25,15 +33,9 @@ const projectSchema = z.object({
     es: z.array(z.string()).min(3),
     en: z.array(z.string()).min(3),
   }),
-  media: z
-    .object({
-      src: z.string().startsWith("/"),
-      width: z.number().int().positive(),
-      height: z.number().int().positive(),
-      alt: z.object({ es: z.string().min(12), en: z.string().min(12) }),
-      caption: z.object({ es: z.string().min(12), en: z.string().min(12) }),
-    })
-    .optional(),
+  media: mediaItem.optional(),
+  gallery: z.array(mediaItem).min(1).optional(),
+  repository: z.url().optional(),
   copy: z.object({ es: localeCopy, en: localeCopy }),
 });
 

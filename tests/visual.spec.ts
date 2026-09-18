@@ -14,7 +14,7 @@ for (const viewport of viewports) {
     await page.setViewportSize(viewport);
     await page.goto("es/", { waitUntil: "networkidle" });
     await expect(page.locator("main")).toBeVisible();
-    await expect(page.locator(".project-media img")).toHaveCount(2);
+    await expect(page.locator(".project-media img")).toHaveCount(3);
     for (const image of await page.locator(".project-media img").all())
       await image.scrollIntoViewIfNeeded();
     expect(

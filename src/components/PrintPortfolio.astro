@@ -14,11 +14,7 @@ interface Props {
 const { lang, featured, timeline, lab } = Astro.props;
 const t = ui[lang];
 const p = profile[lang];
-const featuredGroups = [
-  featured.slice(0, 1),
-  featured.slice(1, 2),
-  featured.slice(2, 4),
-];
+const featuredGroups = featured.map((project) => [project]);
 const projectIndex = [...featured, ...timeline, ...lab].sort(
   (a, b) => a.data.order - b.data.order,
 );
@@ -144,6 +140,14 @@ const evidence = {
                 <b>{t.technical}</b> · {copy.technical}
               </p>
             )}
+            {data.repository && (
+              <p class="print-repository">
+                <b>GitHub</b> ·{" "}
+                <a href={data.repository}>
+                  {data.repository.replace("https://", "")}
+                </a>
+              </p>
+            )}
           </article>
         );
       })}
@@ -165,6 +169,7 @@ const evidence = {
           <div>
             <h3>{data.copy[lang].title}</h3>
             <p>{data.copy[lang].strapline}</p>
+            <p class="print-timeline-detail">{data.copy[lang].system}</p>
           </div>
         </article>
       ))}

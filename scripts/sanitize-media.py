@@ -1,4 +1,4 @@
-"""Generate public, pixel-sanitised screenshots from ignored local originals.
+"""Generate public, sanitised screenshots from ignored local originals.
 
 Run from the repository root with Pillow available:
     python scripts/sanitize-media.py
@@ -125,6 +125,24 @@ CAPTURES = {
             (1803, 653, 1823, 671),
         ],
     },
+    "p001-terraldata-navigation.webp": {
+        "source": ROOT / "Assets/raw/TerralData/IndiceTerralData.png",
+        "size": (360, 829),
+        "boxes": [],
+    },
+    "p001-terraldata-roles.webp": {
+        "source": ROOT / "Assets/raw/TerralData/RolesTerralData.png",
+        "size": (341, 445),
+        "boxes": [],
+        # Keep the role controls unpixelated while excluding session identity.
+        "crop": (6, 185, 335, 441),
+    },
+    "p003-metro-scenario-studio.webp": {
+        "source": ROOT
+        / "Assets/raw/MetroScenarioStudio/platform-overview.png",
+        "size": (2479, 1336),
+        "boxes": [],
+    },
 }
 
 
@@ -144,6 +162,8 @@ def main() -> None:
             ):
                 raise ValueError(f"Out-of-bounds privacy box in {filename}: {box}")
             pixelate(image, box)
+        if crop := capture.get("crop"):
+            image = image.crop(crop)
         destination = output / filename
         image.save(destination, "WEBP", quality=92, method=6)
         print(f"{destination.relative_to(ROOT)}: {image.width}x{image.height}")
