@@ -1,6 +1,10 @@
 # Revisión de publicación
 
-Fecha de revisión: 18 de septiembre de 2026.
+Fecha de revisión: 26 de octubre de 2026.
+
+P010 se presenta como **BlueMonkey Robotics**, iniciativa de I+D en robótica como servicio, modularidad, percepción con IA y cooperación entre robots. Lucy se describe como rover experimental planteado para validar una base reutilizable; no se atribuyen capacidades probadas ni servicios desplegados. Se omite la vertiente educativa del resumen del portfolio.
+
+Fuente: web corporativa pública, revisada el 26 de octubre de 2026 mediante `https://bluemonkeyrobotics-web.netlify.app/`, acceso alternativo del mismo sitio. El enlace público del portfolio usa su dominio canónico `https://bluemonkeyrobotics.com/`; el dominio propio reinicia la conexión en la red de revisión. No se incorporan imágenes ni recursos externos nuevos.
 
 ## Recursos públicos
 

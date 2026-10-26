@@ -36,6 +36,7 @@ const projectSchema = z.object({
   media: mediaItem.optional(),
   gallery: z.array(mediaItem).min(1).optional(),
   repository: z.url().optional(),
+  website: z.url().optional(),
   copy: z.object({ es: localeCopy, en: localeCopy }),
 });
 

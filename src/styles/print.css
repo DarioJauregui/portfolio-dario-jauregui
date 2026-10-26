@@ -478,6 +478,15 @@ a {
   color: #55514b;
 }
 
+.print-lab p + p {
+  margin-top: 1.5mm;
+}
+
+.print-lab .print-project-website {
+  margin-top: 2mm;
+  color: #6d130e;
+}
+
 .print-contact {
   display: grid;
   align-content: space-between;

@@ -181,11 +181,17 @@ const portfolioUrl = withBase(
               </div>
               <h3>{copy.title}</h3>
               <p>{copy.strapline}</p>
+              {data.website && <p>{copy.system}</p>}
               <ArchitectureFlow
                 steps={data.architecture[lang]}
                 compact
                 label={t.architecture}
               />
+              {data.website && (
+                <a class="text-link" href={data.website} rel="external">
+                  {t.projectWebsite}
+                </a>
+              )}
             </article>
           );
         })}

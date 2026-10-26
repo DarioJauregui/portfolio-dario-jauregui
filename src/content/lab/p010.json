@@ -4,45 +4,44 @@
   "period": { "es": "2026 - Actualidad", "en": "2026 - Present" },
   "level": "lab",
   "status": {
-    "es": "Lab público en etapa inicial",
-    "en": "Early-stage public lab"
+    "es": "I+D en fase inicial",
+    "en": "Early-stage R&D"
   },
+  "website": "https://bluemonkeyrobotics.com/",
   "architecture": {
     "es": [
-      "Reto guiado",
-      "Diseño",
-      "Montaje",
-      "Programación",
-      "Prueba y aprendizaje"
+      "Definir la tarea",
+      "Diseñar y construir",
+      "Integrar sensores e IA",
+      "Probar y validar"
     ],
     "en": [
-      "Guided challenge",
-      "Design",
-      "Assembly",
-      "Programming",
-      "Testing and learning"
+      "Define the task",
+      "Design and build",
+      "Integrate sensors and AI",
+      "Test and validate"
     ]
   },
   "copy": {
     "es": {
-      "title": "Aula de robótica educativa",
-      "strapline": "Una iniciativa personal para acercar electrónica, programación y prototipado a niños mediante proyectos.",
-      "context": "La robótica ofrece una forma tangible de conectar curiosidad, razonamiento y creatividad desde edades tempranas.",
-      "problem": "El reto consiste en convertir conceptos técnicos en actividades progresivas, seguras y motivadoras.",
-      "system": "El laboratorio combina sensores, mecanismos, programación y prototipado en retos con resultados visibles.",
-      "contribution": "Estoy diseñando el enfoque, la secuencia de actividades y los prototipos educativos.",
-      "impact": "El proyecto está en una etapa inicial de aprendizaje basado en proyectos.",
-      "confidentiality": "La iniciativa es pública; se protegerá la imagen y cualquier dato personal de los participantes."
+      "title": "BlueMonkey Robotics",
+      "strapline": "Coimpulso desde Málaga una iniciativa de I+D orientada a la robótica como servicio (RaaS), con sistemas modulares, percepción con IA y cooperación entre robots.",
+      "context": "El proyecto parte de tareas reales de empresas y personas para estudiar su automatización mediante robótica.",
+      "problem": "Cada aplicación requiere contrastar autonomía, viabilidad técnica, operación y coste antes de plantear un servicio.",
+      "system": "El primer desarrollo, Lucy, es un rover experimental planteado para validar una base reutilizable, atendiendo a fiabilidad, mantenimiento y coste.",
+      "contribution": "Coimpulso BlueMonkey Robotics junto a Jeanpaulo, combinando ingeniería, prototipado e inteligencia artificial aplicada.",
+      "impact": "La iniciativa está en fase de investigación y desarrollo; la validación de Lucy orientará futuros desarrollos y aplicaciones.",
+      "confidentiality": "El resumen se basa en la web corporativa pública. Las líneas de investigación y objetivos de validación no se presentan como servicios desplegados ni capacidades demostradas."
     },
     "en": {
-      "title": "Educational robotics classroom",
-      "strapline": "A personal initiative bringing electronics, programming and prototyping to children through projects.",
-      "context": "Robotics offers a tangible way to connect curiosity, reasoning and creativity from an early age.",
-      "problem": "The challenge is turning technical ideas into progressive, safe and motivating activities.",
-      "system": "The lab combines sensors, mechanisms, programming and prototyping in challenges with visible outcomes.",
-      "contribution": "I am designing the approach, activity sequence and educational prototypes.",
-      "impact": "The project is at an early stage and follows a project-based learning approach.",
-      "confidentiality": "The initiative is public; participants' images and personal data will be protected."
+      "title": "BlueMonkey Robotics",
+      "strapline": "I am helping build an R&D initiative in Málaga focused on robotics as a service (RaaS), combining modular systems, AI perception and cooperation between robots.",
+      "context": "The project starts with real tasks faced by businesses and individuals to explore their automation through robotics.",
+      "problem": "Each application requires assessing autonomy, technical feasibility, operation and cost before proposing a service.",
+      "system": "The first development, Lucy, is an experimental rover intended to validate a reusable foundation, considering reliability, maintenance and cost.",
+      "contribution": "I am helping build BlueMonkey Robotics alongside Jeanpaulo, combining engineering, prototyping and applied artificial intelligence.",
+      "impact": "The initiative is in research and development; validating Lucy will inform future developments and applications.",
+      "confidentiality": "The summary is based on the public corporate website. Research directions and validation objectives are not presented as deployed services or demonstrated capabilities."
     }
   }
 }

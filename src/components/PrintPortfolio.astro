@@ -181,7 +181,13 @@ const evidence = {
           <span>{data.code}</span>
           <h3>{data.copy[lang].title}</h3>
           <p>{data.copy[lang].strapline}</p>
+          {data.website && <p>{data.copy[lang].system}</p>}
           <small>{data.architecture[lang].join(" · ")}</small>
+          {data.website && (
+            <p class="print-project-website">
+              <a href={data.website}>{new URL(data.website).hostname}</a>
+            </p>
+          )}
         </article>
       ))}
     </div>
